@@ -1,5 +1,5 @@
+"use client";
 import axiosInstance from "@/config/axiosInstance";
-import getData from "@/service/getMovies";
 import { GenreProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
 import { useEffect, useState } from "react";
