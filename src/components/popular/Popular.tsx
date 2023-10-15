@@ -36,12 +36,12 @@ export default function Popular({ results }: any) {
   };
   return (
     <>
-      <div className=" px-10  w-full overflow-hidden  bg-base">
-        <h1 className="text-3xl font-semibold my-3">Popular</h1>
+      <div className=" lg:px-10 px-1  w-full overflow-hidden  bg-base">
+        <h1 className="lg:text-3xl text-xl font-semibold my-3">Popular</h1>
         <div className="w-full  overflow-hidden  h-[17rem] gap-x-2 justify-between  relative flex ">
           <div
             onClick={prevSlide}
-            className={`absolute z-[20] left-0 text-5xl  p-1 rounded-full cursor-pointer hover:text-white  bg-black/80 text-primary top-1/2 ${
+            className={`absolute z-[20] left-0 text-3xl lg:text-5xl  p-1 rounded-full cursor-pointer hover:text-white  bg-black/80 text-primary top-1/2 ${
               curr == 0 && "hidden"
             }`}
           >
@@ -49,7 +49,7 @@ export default function Popular({ results }: any) {
           </div>
           <div
             onClick={nextSlide}
-            className={`absolute  z-[20] right-0 text-5xl cursor-pointer hover:text-white  p-1 rounded-full bg-black/80 text-primary top-1/2 ${
+            className={`absolute  z-[20] right-0 text-3xl lg:text-5xl cursor-pointer hover:text-white  p-1 rounded-full bg-black/80 text-primary top-1/2 ${
               datas == curr && "hidden"
             }`}
           >

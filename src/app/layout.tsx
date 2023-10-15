@@ -1,9 +1,11 @@
-import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Context from "@/context/Context";
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/layouts/Navbar";
+import NextTopLoader from "nextjs-toploader";
 
-const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
   weight: "400",
   subsets: ["latin"],
@@ -19,10 +21,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={poppins.className}>
-        <Navbar />
-        <div>{children}</div>
+        <NextTopLoader
+          color="#B41103"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={true}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #B41103,0 0 5px #45c6c0"
+        />
+        <Context>
+          <Navbar />
+          {children}
+          <Footer />
+        </Context>
       </body>
     </html>
   );

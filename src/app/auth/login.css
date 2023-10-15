@@ -1,0 +1,18 @@
+@keyframes login {
+  0% {
+    transform: translateX(5px);
+  }
+  30% {
+    transform: translateX(-2px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-login {
+  animation: login 0.1s normal forwards;
+}

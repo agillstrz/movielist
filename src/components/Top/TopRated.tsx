@@ -5,6 +5,7 @@ import {
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 import Card from "../card/Card";
+import { MoviesProps } from "@/utils";
 type Data = {
   adult: Boolean;
   backdrop_path: String;
@@ -36,12 +37,12 @@ export default function TopRated({ results }: any) {
   };
   return (
     <>
-      <div className=" px-10 w-full overflow-hidden  bg-base">
+      <div className=" lg:px-10 w-full overflow-hidden  bg-base">
         <h1 className="text-3xl font-semibold my-3">Top Rated</h1>
-        <div className="w-full  overflow-hidden  h-[17rem] gap-x-2 justify-between  relative flex ">
+        <div className="w-full overflow-x-hidden  h-[17rem] gap-x-2 justify-between  relative flex ">
           <div
             onClick={prevSlide}
-            className={`absolute z-[20] left-0 text-5xl  p-1 rounded-full cursor-pointer hover:text-white  bg-black/80 text-primary top-1/2 ${
+            className={`absolute z-[20] left-0 text-3xl lg:text-5xl  p-1 rounded-full cursor-pointer hover:text-white  bg-black/80 text-primary top-1/2 ${
               curr == 0 && "hidden"
             }`}
           >
@@ -49,7 +50,7 @@ export default function TopRated({ results }: any) {
           </div>
           <div
             onClick={nextSlide}
-            className={`absolute  z-[20] right-0 text-5xl cursor-pointer hover:text-white  p-1 rounded-full bg-black/80 text-primary top-1/2 ${
+            className={`absolute  z-[20] right-0 text-3xl lg:text-5xl cursor-pointer hover:text-white  p-1 rounded-full bg-black/80 text-primary top-1/2 ${
               datas == curr && "hidden"
             }`}
           >

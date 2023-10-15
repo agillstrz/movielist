@@ -1,30 +1,26 @@
 import Hero from "@/components/Hero";
 import TopRated from "@/components/Top/TopRated";
 import Popular from "@/components/popular/Popular";
-import axiosInstance from "@/config/axiosInstance";
+import getMovies from "@/service/getMovies";
 import CONSTANT from "@/utils/CONSTANT";
 
-async function getPopular() {
-  const res = await axiosInstance.get(
+export default async function Home() {
+  const { results: movies } = await getMovies(
     `/movie/popular?api_key=${CONSTANT.API_KEY}`
   );
-  return res.data;
-}
-async function getRated() {
-  const res = await axiosInstance.get(
+  const { results: rated } = await getMovies(
     `/movie/top_rated?api_key=${CONSTANT.API_KEY}`
   );
-  return res.data;
-}
-export default async function Home() {
-  const { results } = await getPopular();
-  const { results: data } = await getRated();
-
+  const { results: playing } = await getMovies(
+    `/movie/now_playing?api_key=${CONSTANT.API_KEY}`
+  );
   return (
     <>
-      <Hero />
-      <TopRated results={data} />
-      <Popular results={results} />
+      <div className="overflow-hidden">
+        <Hero results={playing} />
+      </div>
+      <TopRated results={movies} />
+      <Popular results={rated} />
       {/* <div className=" p-10 w-full bg-black flex gap-x-3">
         <button className="px-8 py-1 bg-primary hover:bg-transparent border hover:border-primary border-transparent transition-all duration-150 ease-in rounded-full">
           Action

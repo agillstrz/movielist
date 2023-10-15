@@ -1,59 +1,121 @@
 "use client";
-import { BiSolidSearch } from "react-icons/bi";
-type Data = {
-  adult: Boolean;
-  backdrop_path: String;
-  genre_ids: Number[];
-  id: Number;
-  original_language: String;
-  original_title: String;
-  overview: String;
-  popularity: Number;
-  poster_path: String;
-  release_date: String;
-  title: String;
-  video: Boolean;
-  vote_average: Number;
-  vote_count: Number;
-};
 
 interface Movieslist {
-  datas: Data;
+  datas: MoviesProps;
 }
-import React, { useEffect, useState } from "react";
-import axiosInstance from "@/config/axiosInstance";
-import CONSTANT from "@/utils/CONSTANT";
 import CardMovies from "@/components/card/CardMovies";
-// async function getTvShow() {
-//   const res = await axiosInstance.get(
-//     `/movie/now_playing?api_key=${CONSTANT.API_KEY}&page=${1}`
-//   );
-//   return res.data;
-// }
+import axiosInstance from "@/config/axiosInstance";
+import { GenreProps, MoviesProps } from "@/utils";
+import CONSTANT from "@/utils/CONSTANT";
+import React, { useEffect, useState } from "react";
+import { BiSolidDownArrow } from "react-icons/bi";
+import { InfinitySpin } from "react-loader-spinner";
+
 export default function TvShow() {
-  //   const { dates, page, results } = await getTvShow();
   const [data, setDatas] = useState<Movieslist[]>([]);
+  const [genre, setGenre] = useState<GenreProps[]>([]);
+  const [show, setShow] = useState<boolean>(false);
+
   const [page, setPages] = useState<number>(1);
+  const [name, setName] = useState<string>("");
   const [loading, setLoading] = useState<Boolean>(false);
-  useEffect(() => {
+  const [more, setMore] = useState<Boolean>(false);
+
+  function getMovies() {
     setLoading(true);
     axiosInstance
       .get(`/movie/now_playing?api_key=${CONSTANT.API_KEY}&page=${page}`)
       .then((res) => {
         setDatas(res.data.results);
-        setPages((prevPage) => (prevPage += 1));
         setLoading(false);
       });
+  }
+  function getGenre() {
+    setLoading(true);
+    axiosInstance
+      .get(`/genre/movie/list?api_key=${CONSTANT.API_KEY}`)
+      .then((res) => {
+        setGenre(res.data.genres);
+        setLoading(false);
+      });
+  }
+  useEffect(() => {
+    getMovies();
+    getGenre();
   }, []);
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (name == "") {
+      getMovies();
+    } else {
+      setLoading(true);
+      setDatas([]);
+      axiosInstance
+        .get(
+          `/search/movie?query=${name}&include_adult=false&language=en-US&page=1?api_key=${CONSTANT.API_KEY}`,
+          {
+            headers: {
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NzhhYzFmZjZmYTMzNzFjODc2M2VlNmQ1MjJjYTcxYyIsInN1YiI6IjYyZWY0NGM5NTE0YzRhMDA3YWI1MzBhZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0NK9KNXs0cpHJo4lAqNOdJRL0yHaldonQ1nX8G6E4ak`,
+            },
+          }
+        )
+        .then((res) => {
+          setDatas(res.data.results);
+          setLoading(false);
+        });
+    }
+  };
+
   return (
     <div className="layouts min-h-screen">
-      <div className="flex gap-x-4 justify-between mb-4">
-        <h1 className="font-bold text-3xl ">Movies</h1>
+      <div className="mb-4 overflow-hidden">
+        <div className="flex gap-x-4 items-center justify-between">
+          <h1 className="font-bold text-3xl ">Movies</h1>
+          <form onSubmit={handleSearch} action="" className="w-full">
+            <input
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Find Movies..."
+              className="outline-none bg-transparent px-2 h-12 w-full focus:rounded-lg border-b-primary border  border-transparent focus:border-primary"
+              name=""
+              id=""
+            />
+          </form>
+        </div>
+        <div
+          className={`flex relative flex-wrap  gap-y-2 transition-all duration-300 ease-in  items-center mt-5 gap-x-2 ${
+            show ? "lg:h-[80px]" : "lg:h-9"
+          }`}
+        >
+          {genre.length <= 1
+            ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((m) => (
+                <button
+                  key={m}
+                  className="w-24 animate-pulse bg-white/20 rounded-md  h-5 font-bold text-sm "
+                ></button>
+              ))
+            : genre.map((genres) => (
+                <button
+                  key={genres.id}
+                  className="px-3 py-1 font-bold text-sm hover:bg-primary/80    bg-primary rounded-full "
+                >
+                  {genres.name}
+                </button>
+              ))}
+          <button
+            onClick={() => setShow(!show)}
+            className={`absolute ${
+              show && "rotate-[180deg] text-primary"
+            } text-lg md:block hidden right-0 transition-all duration-300 ease-in `}
+          >
+            <BiSolidDownArrow />
+          </button>
+        </div>
       </div>
-
       <div className="flex w-full  justify-center">
         <div className="grid hfull  w-full  place-items-center gap-3 lg:gap-y-3 lg:gap-x-5 grid-cols-2 lg:grid-cols-5">
-          {data && !loading
+          {data.length >= 1 && !loading
             ? data.map((m: any) => <CardMovies key={m.id} datas={m} />)
             : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((m) => (
                 <div
@@ -64,9 +126,10 @@ export default function TvShow() {
         </div>
       </div>
       <div className="flex  items-end w-full my-5 justify-center">
-        {!loading && (
+        {!more ? (
           <button
             onClick={() => {
+              setMore(true);
               setPages((prevPage) => (prevPage += 1));
               axiosInstance
                 .get(
@@ -74,12 +137,15 @@ export default function TvShow() {
                 )
                 .then((res) => {
                   setDatas([...data, ...res.data.results]);
+                  setMore(false);
                 });
             }}
             className="px-24 py-2 bg-primary border border-transparent transition-all duration-150 ease-linear hover:bg-transparent hover:border-primary "
           >
             Show More
           </button>
+        ) : (
+          <InfinitySpin width="200" color="#B41103" />
         )}
       </div>
     </div>
