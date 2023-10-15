@@ -39,6 +39,8 @@ export default function TvShow() {
         setLoading(false);
       });
   }
+
+  // eslint-disable-next-line
   useEffect(() => {
     getMovies();
     getGenre();

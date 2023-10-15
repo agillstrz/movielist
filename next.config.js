@@ -5,8 +5,5 @@ module.exports = {
     // your project has type errors.
     // !! WARN !!
     ignoreBuildErrors: true,
-    images: {
-      unoptimized: false,
-    },
   },
 };
