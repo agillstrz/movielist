@@ -4,6 +4,7 @@ interface Movieslist {
   datas: MoviesProps;
 }
 import CardMovies from "@/components/card/CardMovies";
+import Genre from "@/components/genre/Genre";
 import axiosInstance from "@/config/axiosInstance";
 import { GenreProps, MoviesProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
@@ -30,20 +31,6 @@ export default function TvShow() {
         setLoading(false);
       });
   }
-  function getGenre() {
-    setLoading(true);
-    axiosInstance
-      .get(`/genre/movie/list?api_key=${CONSTANT.API_KEY}`)
-      .then((res) => {
-        setGenre(res.data.genres);
-        setLoading(false);
-      });
-  }
-
-  useEffect(() => {
-    getMovies();
-    getGenre();
-  }, []);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -68,6 +55,10 @@ export default function TvShow() {
     }
   };
 
+  useEffect(() => {
+    getMovies();
+  }, []);
+
   return (
     <div className="layouts min-h-screen">
       <div className="mb-4 overflow-hidden">
@@ -89,21 +80,7 @@ export default function TvShow() {
             show ? "lg:h-[80px]" : "lg:h-9"
           }`}
         >
-          {genre.length <= 1
-            ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((m) => (
-                <button
-                  key={m}
-                  className="w-24 animate-pulse bg-white/20 rounded-md  h-5 font-bold text-sm "
-                ></button>
-              ))
-            : genre.map((genres) => (
-                <button
-                  key={genres.id}
-                  className="px-3 py-1 font-bold text-sm hover:bg-primary/80    bg-primary rounded-full "
-                >
-                  {genres.name}
-                </button>
-              ))}
+          <Genre />
           <button
             onClick={() => setShow(!show)}
             className={`absolute ${

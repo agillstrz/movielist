@@ -1,5 +1,6 @@
 import getData from "@/service/getMovies";
 import CONSTANT from "@/utils/CONSTANT";
+import Image from "next/image";
 
 interface watchProps {
   logo_path: string;
@@ -17,11 +18,13 @@ export default async function WatchProvider({ id }: { id: string }) {
   return (
     <div className="flex flex-wrap gap-2">
       {AU?.buy.map((watch: watchProps) => (
-        <img
+        <Image
           key={watch.provider_id}
           src={`https://image.tmdb.org/t/p/original${watch.logo_path}`}
           alt={watch.provider_name}
           className="h-6 rounded-xl "
+          height={500}
+          width={500}
         />
       ))}
     </div>

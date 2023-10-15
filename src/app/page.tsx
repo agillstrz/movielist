@@ -1,17 +1,17 @@
 import Hero from "@/components/Hero";
 import TopRated from "@/components/Top/TopRated";
 import Popular from "@/components/popular/Popular";
-import getMovies from "@/service/getMovies";
+import getData from "@/service/getMovies";
 import CONSTANT from "@/utils/CONSTANT";
 
 export default async function Home() {
-  const { results: movies } = await getMovies(
+  const { results: movies } = await getData(
     `/movie/popular?api_key=${CONSTANT.API_KEY}`
   );
-  const { results: rated } = await getMovies(
+  const { results: rated } = await getData(
     `/movie/top_rated?api_key=${CONSTANT.API_KEY}`
   );
-  const { results: playing } = await getMovies(
+  const { results: playing } = await getData(
     `/movie/now_playing?api_key=${CONSTANT.API_KEY}`
   );
   return (
