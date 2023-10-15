@@ -40,15 +40,15 @@ export default function Hero({ results }: { results: MoviesProps[] }) {
               </p>
               <p>{movie.release_date}</p>
             </div>
-            <h1 className="font-semibold tracking-widest text-md lg:text-2xl">
+            <h1 className="font-semibold tracking-widest text-md lg:text-4xl">
               {movie.title}
             </h1>
             <p>{movie.overview}</p>
             <div className="flex gap-x-2 font-semibold uppercase">
-              <button className="px-10 tracking-wide  rounded-full bg-primary  py-2">
+              <button className="px-12 tracking-wide  rounded-full bg-primary  py-2">
                 Watch
               </button>
-              <button className="px-10 tracking-wide  rounded-full bg-secondary  py-2">
+              <button className="px-12 tracking-wide  rounded-full bg-secondary  py-2">
                 Add List
               </button>
             </div>

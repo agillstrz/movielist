@@ -1,26 +1,8 @@
 "use client";
+import { MoviesProps } from "@/utils";
 import { useRouter } from "next/navigation";
-type Data = {
-  adult: Boolean;
-  backdrop_path: String;
-  genre_ids: Number[];
-  id: Number;
-  original_language: String;
-  original_title: String;
-  overview: String;
-  popularity: Number;
-  poster_path: String;
-  release_date: String;
-  title: String;
-  video: Boolean;
-  vote_average: Number;
-  vote_count: Number;
-};
 
-interface CardPopular {
-  datas: Data;
-}
-export default function Card({ datas }: CardPopular) {
+export default function Card({ datas }: { datas: MoviesProps }) {
   const router = useRouter();
   return (
     <div

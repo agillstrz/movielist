@@ -5,6 +5,7 @@ import {
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 import Card from "../card/Card";
+import { MoviesProps } from "@/utils";
 type Data = {
   adult: Boolean;
   backdrop_path: String;
@@ -25,7 +26,7 @@ type Data = {
 interface ResultsType {
   results: Data;
 }
-export default function Popular({ results }: any) {
+export default function Popular({ results }: { results: MoviesProps[] }) {
   const [curr, setCurr] = useState(0);
   let datas = results.length / 5;
   const nextSlide = () => {
@@ -59,7 +60,7 @@ export default function Popular({ results }: any) {
             className="flex  gap-x-1 transition-all duration-500 ease-in-out"
             style={{ transform: `translateX(${-25 * curr}%)` }}
           >
-            {results.map((m: any) => (
+            {results.map((m: MoviesProps) => (
               <Card key={m.id} datas={m} />
             ))}
           </div>
