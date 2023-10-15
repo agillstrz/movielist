@@ -1,6 +1,5 @@
 import getData from "@/service/getMovies";
 import CONSTANT from "@/utils/CONSTANT";
-import React from "react";
 
 interface watchProps {
   logo_path: string;
@@ -20,9 +19,9 @@ export default async function WatchProvider({ id }: { id: string }) {
       {AU?.buy.map((watch: watchProps) => (
         <img
           key={watch.provider_id}
-          className="h-6 rounded-xl "
           src={`https://image.tmdb.org/t/p/original${watch.logo_path}`}
-          alt=""
+          alt={watch.provider_name}
+          className="h-6 rounded-xl "
         />
       ))}
     </div>
