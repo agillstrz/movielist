@@ -5,6 +5,7 @@ import CONSTANT from "@/utils/CONSTANT";
 import { AiFillPlaySquare } from "react-icons/ai";
 import AddList from "./AddList";
 import WatchProvider from "./WatchProvider";
+import Image from "next/image";
 async function getDetail(id: string) {
   const res = await axiosInstance.get(
     `/movie/${id}?api_key=${CONSTANT.API_KEY}`
@@ -37,10 +38,12 @@ export default async function page({ params }: { params: { id: string } }) {
             <div className="lg:w-1/2     h-[50%]  lg:h-[80%] z-20  flex  justify-center ">
               <div className="h-full  relative  lg:w-[65%] rounded-lg ">
                 <ModalPicture>
-                  <img
+                  <Image
                     className="lg:h-[31rem] w-full cursor-pointer rounded-lg"
-                    src={`https://image.tmdb.org/t/p/original${datas.poster_path}`}
-                    alt=""
+                    src={`${CONSTANT.foto}${datas.poster_path}`}
+                    alt="img"
+                    width={500}
+                    height={500}
                   />
                 </ModalPicture>
                 <div className="absolute flex overflow-hidden items-center  cursor-pointer transition-all duration-700 ease-in-out  group rounded-lg font-bold gap-x-2 p-3 bg-primary bottom-2 -right-8">
@@ -94,8 +97,8 @@ export default async function page({ params }: { params: { id: string } }) {
                   Related Movies
                 </h2>
                 <div className="flex gap-x-2">
-                  {results.slice(0, 3).map((m: any) => (
-                    <CardRecommendation datas={m} />
+                  {results.slice(0, 3).map((m: any, index: number) => (
+                    <CardRecommendation key={index} datas={m} />
                   ))}
                 </div>
               </div>

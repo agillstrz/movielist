@@ -40,7 +40,6 @@ export default function TvShow() {
       });
   }
 
-  // eslint-disable-next-line
   useEffect(() => {
     getMovies();
     getGenre();
