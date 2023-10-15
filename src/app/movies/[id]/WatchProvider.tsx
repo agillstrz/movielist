@@ -20,11 +20,11 @@ export default async function WatchProvider({ id }: { id: string }) {
       {AU?.buy.map((watch: watchProps) => (
         <Image
           key={watch.provider_id}
-          src={`https://image.tmdb.org/t/p/original${watch.logo_path}`}
+          src={`${CONSTANT.foto}${watch.logo_path}`}
           alt={watch.provider_name}
           className="h-6 rounded-xl "
-          height={500}
-          width={500}
+          height={24}
+          width={24}
         />
       ))}
     </div>
