@@ -15,7 +15,6 @@ import { InfinitySpin } from "react-loader-spinner";
 export default function AllMovies() {
   const [data, setDatas] = useState<Movieslist[]>([]);
   const [show, setShow] = useState<boolean>(false);
-
   const [page, setPages] = useState<number>(1);
   const [name, setName] = useState<string>("");
   const [loading, setLoading] = useState<Boolean>(false);
@@ -108,7 +107,7 @@ export default function AllMovies() {
             : data.map((m: any) => <CardMovies key={m.id} datas={m} />)}
         </div>
       </div>
-      <div className="flex  items-end w-full my-5 justify-center">
+      {/* <div className="flex  items-end w-full my-5 justify-center">
         {!more ? (
           <button
             onClick={() => {
@@ -130,7 +129,7 @@ export default function AllMovies() {
         ) : (
           <InfinitySpin width="200" color="#B41103" />
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
