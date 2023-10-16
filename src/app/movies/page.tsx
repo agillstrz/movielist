@@ -1,6 +1,6 @@
 import AllMovies from "@/components/movies/AllMovis";
 
-export default function TvShow() {
+export default function page() {
   return (
     <>
       <AllMovies />

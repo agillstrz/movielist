@@ -37,7 +37,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`flex px-10 shadow-md backdrop-blur-sm   bg z-[999] fixed w-full top-0 left-0  h-16 ${
+      className={`flex px-4 lg:px-16 shadow-md backdrop-blur-sm   bg z-[999] fixed w-full top-0 left-0  h-16 ${
         scroll ? "  bg-base/40    " : ""
       } justify-between items-center`}
     >

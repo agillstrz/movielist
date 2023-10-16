@@ -1,8 +1,8 @@
 "use client";
 import axiosInstance from "@/config/axiosInstance";
-import { GenreProps, MoviesProps } from "@/utils";
+import { GenreProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Genre({ setDatas }: any) {
   const [genre, setGenre] = useState<any>([]);

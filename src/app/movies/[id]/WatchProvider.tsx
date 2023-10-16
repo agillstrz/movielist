@@ -17,7 +17,7 @@ export default async function WatchProvider({ id }: { id: string }) {
 
   return (
     <div className="flex flex-wrap gap-2">
-      {AU?.buy.map((watch: watchProps) => (
+      {AU?.buy?.map((watch: watchProps) => (
         <Image
           key={watch.provider_id}
           src={`${CONSTANT.foto}${watch.logo_path}`}

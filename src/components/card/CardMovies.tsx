@@ -7,10 +7,10 @@ export default function CardMovies({ datas }: { datas: MoviesProps }) {
   return (
     <div
       onClick={() => router.push(`/movies/${datas.id}`)}
-      className="h-[24rem]  border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-red-600 flex flex-col gap-y-2 w-full  rounded-xl overflow-hidden"
+      className="h-[18rem]  border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-red-600 flex flex-col gap-y-2 w-full  rounded-xl overflow-hidden"
     >
       <div
-        className="h-[80%] relative  w-full bg-cover bg-center "
+        className="h-full relative  w-full bg-cover bg-center "
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/w500/${datas.poster_path})`,
         }}
@@ -34,7 +34,7 @@ export default function CardMovies({ datas }: { datas: MoviesProps }) {
           <MdFavorite className=" text-red-600 opacity-60 hover:opacity-100 transition-opacity duration-100 ease-in lg:text-[30px]" />
         </div> */}
       </div>
-      <div className="flex justify-between">
+      {/* <div className="flex justify-between">
         <div className="flex px-1 flex-col gap-y-1">
           <h1 className="font-semibold text-sm text-red-600">{datas.title}</h1>
 
@@ -42,7 +42,7 @@ export default function CardMovies({ datas }: { datas: MoviesProps }) {
             <p className="">2018</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

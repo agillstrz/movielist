@@ -39,7 +39,7 @@ export default async function page({ params }: { params: { id: string } }) {
               <div className="h-full  relative  lg:w-[65%] rounded-lg ">
                 <ModalPicture>
                   <Image
-                    className="lg:h-[31rem] w-full cursor-pointer rounded-lg"
+                    className="lg:h-[31rem] h-[18rem]  w-full cursor-pointer rounded-lg"
                     src={`${CONSTANT.foto}${datas.poster_path}`}
                     alt="img"
                     width={500}

@@ -29,7 +29,7 @@ export default function Hero({ results }: { results: MoviesProps[] }) {
             transform: `translateX(-${next * 100}%)`,
           }}
         >
-          <div className="absolute w-full h-full bg-black/60" />
+          <div className="absolute w-full h-full bg-black/40" />
 
           <div className="flex lg:w-[40%] z-10 m-4 lg:m-0  lg:mx-24 items-start flex-col gap-y-3">
             {/* <button>{m}</button> */}

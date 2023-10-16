@@ -4,7 +4,7 @@ import { BsFacebook, BsTwitter } from "react-icons/bs";
 
 export default function Footer() {
   return (
-    <div className="h-24 p-10  bg-base flex items-center  justify-between">
+    <div className="h-24 py-10 px-16  bg-base flex items-center  justify-between">
       <div className="flex text-md font-semibold  flex-col ">
         <p>zemovies</p>
         <p>2023</p>

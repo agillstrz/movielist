@@ -17,7 +17,7 @@ export default function ModalPicture({ children }: { children: ReactNode }) {
         <div
           ref={modalRef}
           onClick={close}
-          className="fixed h-screen w-full top-0 flex justify-center items-center bg-black/80 backdrop-blur-sm z-[9999]  left-0 right-0 bottom-0"
+          className="fixed   lg:h-screen w-full top-0 flex justify-center items-center bg-black/80 backdrop-blur-sm z-[9999]  left-0 right-0 bottom-0"
         >
           <div className="bg-white w-fit  overflow-hidden rounded-lg h-fit">
             {children}

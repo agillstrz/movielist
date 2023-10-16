@@ -6,7 +6,7 @@ interface Movieslist {
 import CardMovies from "@/components/card/CardMovies";
 import Genre from "@/components/genre/Genre";
 import axiosInstance from "@/config/axiosInstance";
-import { GenreProps, MoviesProps } from "@/utils";
+import { MoviesProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
 import React, { useEffect, useState } from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
@@ -83,7 +83,7 @@ export default function AllMovies() {
             onClick={() => getMovies()}
             className="px-3 py-1 font-bold text-sm hover:bg-primary/80    bg-primary rounded-full"
           >
-            Semua
+            All
           </button>
           <Genre setDatas={setDatas} />
           <button
@@ -98,14 +98,14 @@ export default function AllMovies() {
       </div>
       <div className="flex w-full  justify-center">
         <div className="grid hfull  w-full  place-items-center gap-3 lg:gap-y-3 lg:gap-x-5 grid-cols-2 lg:grid-cols-5">
-          {data.length >= 1 && !loading
-            ? data.map((m: any) => <CardMovies key={m.id} datas={m} />)
-            : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((m) => (
+          {data.length <= 0 || loading
+            ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((m) => (
                 <div
                   key={m}
-                  className="h-[20rem] rounded-lg w-full animate-pulse bg-white/20"
+                  className="h-[18rem] rounded-lg w-full animate-pulse bg-white/20"
                 ></div>
-              ))}
+              ))
+            : data.map((m: any) => <CardMovies key={m.id} datas={m} />)}
         </div>
       </div>
       <div className="flex  items-end w-full my-5 justify-center">
@@ -123,7 +123,7 @@ export default function AllMovies() {
                   setMore(false);
                 });
             }}
-            className="px-24 py-2 bg-primary border border-transparent transition-all duration-150 ease-linear hover:bg-transparent hover:border-primary "
+            className="px-24 py-2 rounded-full bg-primary border border-transparent transition-all duration-150 ease-linear hover:bg-transparent hover:border-primary "
           >
             Show More
           </button>
