@@ -14,7 +14,6 @@ import { InfinitySpin } from "react-loader-spinner";
 
 export default function AllMovies() {
   const [data, setDatas] = useState<Movieslist[]>([]);
-  const [genre, setGenre] = useState<GenreProps[]>([]);
   const [show, setShow] = useState<boolean>(false);
 
   const [page, setPages] = useState<number>(1);
@@ -80,7 +79,13 @@ export default function AllMovies() {
             show ? "lg:h-[80px]" : "lg:h-9"
           }`}
         >
-          <Genre />
+          <button
+            onClick={() => getMovies()}
+            className="px-3 py-1 font-bold text-sm hover:bg-primary/80    bg-primary rounded-full"
+          >
+            Semua
+          </button>
+          <Genre setDatas={setDatas} />
           <button
             onClick={() => setShow(!show)}
             className={`absolute ${

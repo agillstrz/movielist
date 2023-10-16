@@ -1,10 +1,10 @@
-import Footer from "@/components/Footer";
+import Navbar from "@/components/layouts/Navbar";
 import Context from "@/context/Context";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/layouts/Navbar";
 import NextTopLoader from "nextjs-toploader";
+import "./globals.css";
+import Footer from "@/components/layouts/Footer";
 
 const poppins = Poppins({
   weight: "400",

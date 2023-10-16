@@ -1,10 +1,10 @@
 "use client";
 import axiosInstance from "@/config/axiosInstance";
-import { GenreProps } from "@/utils";
+import { GenreProps, MoviesProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
-export default function Genre() {
+export default function Genre({ setDatas }: any) {
   const [genre, setGenre] = useState<any>([]);
 
   function getGenre() {
@@ -14,6 +14,15 @@ export default function Genre() {
         setGenre(res.data.genres);
       });
   }
+
+  const getByGenre = (id: number) => {
+    setDatas([]);
+    axiosInstance
+      .get(`/discover/movie?api_key=${CONSTANT.API_KEY}&with_genres=${id}`)
+      .then((res) => {
+        setDatas(res.data.results);
+      });
+  };
 
   useEffect(() => {
     getGenre();
@@ -29,6 +38,7 @@ export default function Genre() {
           ))
         : genre.map((genres: GenreProps) => (
             <button
+              onClick={() => getByGenre(genres.id)}
               key={genres.id}
               className="px-3 py-1 font-bold text-sm hover:bg-primary/80    bg-primary rounded-full "
             >

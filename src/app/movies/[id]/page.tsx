@@ -32,7 +32,7 @@ export default async function page({ params }: { params: { id: string } }) {
           backgroundImage: `url('https://image.tmdb.org/t/p/original${datas.backdrop_path}')`,
         }}
       >
-        <div className="absolute  w-full   h-screen bg-black/70" />
+        <div className="absolute  w-full   h-screen bg-black/80" />
         <div className="flex w-full min-h-screen items-center">
           <div className="flex lg:pt-10  pt-20 lg:flex-row flex-col   gap-x-4 h-full items-center justify-center  w-full lg:mx-10">
             <div className="lg:w-1/2     h-[50%]  lg:h-[80%] z-20  flex  justify-center ">
