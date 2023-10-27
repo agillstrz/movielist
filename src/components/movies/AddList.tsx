@@ -1,6 +1,7 @@
 "use client";
 import AUTH from "@/utils/Auth";
 import React, { useState } from "react";
+import { MdNoteAdd } from "react-icons/md";
 
 export default function AddList() {
   const [show, setShow] = useState<Boolean>(false);
@@ -27,8 +28,9 @@ export default function AddList() {
             }, 1000);
           }
         }}
-        className="py-2 px-4 hover:scale-105 transition-all duration-150 ease-linear active:scale-90 rounded-lg bg-primary font-semibold"
+        className="py-2 flex items-center gap-1 px-4 hover:scale-105 transition-all duration-150 ease-linear active:scale-90 rounded-lg bg-primary font-semibold"
       >
+        <MdNoteAdd />
         Add List
       </button>
     </>

@@ -1,14 +1,14 @@
-import Button from "@/components/Button";
 import CardRecommendation from "@/components/card/CardRecommendation";
+import TitleGallery from "@/components/gallery/TitleGallery";
+import ButtonGallery from "@/components/gallery/TitleGallery";
 import ModalPicture from "@/components/modals/ModalPicture";
+import AddList from "@/components/movies/AddList";
+import WatchProvider from "@/components/movies/WatchProvider";
 import axiosInstance from "@/config/axiosInstance";
+import getData from "@/service/getMovies";
 import CONSTANT from "@/utils/CONSTANT";
 import Image from "next/image";
 import { AiFillPlaySquare } from "react-icons/ai";
-import getData from "@/service/getMovies";
-import ButtonGallery from "@/components/gallery/TitleGallery";
-import WatchProvider from "@/components/movies/WatchProvider";
-import AddList from "@/components/movies/AddList";
 
 async function getRelatedMovies(id: string) {
   const res = await axiosInstance.get(
@@ -20,7 +20,9 @@ async function getRelatedMovies(id: string) {
 export default async function page({ params }: { params: { id: string } }) {
   const { id } = params;
   const datas = await getData(`/movie/${id}?`);
-  const { results } = await getRelatedMovies(id);
+  const { results } = await getData(
+    `/movie/${id}/similar?language=en-US&page=1&`
+  );
 
   return (
     <>
@@ -53,7 +55,7 @@ export default async function page({ params }: { params: { id: string } }) {
             <div className="flex lg:w-1/2 z-10   m-4 lg:m-0   items-start flex-col gap-y-3">
               <div className="flex gap-2">
                 <AddList />
-                <ButtonGallery
+                <TitleGallery
                   title={datas.title}
                   id={id}
                   label="Gallery"

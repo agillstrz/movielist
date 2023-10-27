@@ -1,6 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { GrGallery } from "react-icons/gr";
 import React from "react";
+import { MdPhotoLibrary } from "react-icons/md";
 interface ButtonProps {
   className?: string;
   label: string;
@@ -20,8 +22,9 @@ export default function TitleGallery({
   return (
     <button
       onClick={handleNavigate}
-      className={`${className} bg-primary rounded-lg  font-semibold tracking-wide `}
+      className={`${className} flex gap-1  text-white items-center py-2 px-4 hover:scale-105 transition-all duration-150 ease-linear active:scale-90 rounded-lg bg-primary font-semibold  `}
     >
+      <MdPhotoLibrary />
       {label}
     </button>
   );
