@@ -1,3 +1,4 @@
+import CONSTANT from "@/utils/CONSTANT";
 import axios from "axios";
 
 const axiosInstance = axios.create({
@@ -5,6 +6,7 @@ const axiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
     "Cache-Control": "no-store",
+    Authorization: `Bearer ${CONSTANT.token}`,
   },
 });
 

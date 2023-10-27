@@ -58,8 +58,8 @@ export default function AllMovies() {
   }, []);
 
   return (
-    <div className="layouts min-h-screen">
-      <div className="mb-4 overflow-hidden">
+    <>
+      <div className="mb-4  overflow-hidden">
         <div className="flex gap-x-4 items-center justify-between">
           <h1 className="font-bold text-3xl ">Movies</h1>
           <form onSubmit={handleSearch} action="" className="w-full">
@@ -107,29 +107,6 @@ export default function AllMovies() {
             : data.map((m: any) => <CardMovies key={m.id} datas={m} />)}
         </div>
       </div>
-      {/* <div className="flex  items-end w-full my-5 justify-center">
-        {!more ? (
-          <button
-            onClick={() => {
-              setMore(true);
-              setPages((prevPage) => (prevPage += 1));
-              axiosInstance
-                .get(
-                  `/movie/now_playing?api_key=${CONSTANT.API_KEY}&page=${page}`
-                )
-                .then((res) => {
-                  setDatas([...data, ...res.data.results]);
-                  setMore(false);
-                });
-            }}
-            className="px-24 py-2 rounded-full bg-primary border border-transparent transition-all duration-150 ease-linear hover:bg-transparent hover:border-primary "
-          >
-            Show More
-          </button>
-        ) : (
-          <InfinitySpin width="200" color="#B41103" />
-        )}
-      </div> */}
-    </div>
+    </>
   );
 }

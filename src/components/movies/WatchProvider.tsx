@@ -11,7 +11,7 @@ interface watchProps {
 
 export default async function WatchProvider({ id }: { id: string }) {
   const res = await getData(
-    `/movie/${id}/watch/providers?language=en-US&page=1&api_key=${CONSTANT.API_KEY}`
+    `/movie/${id}/watch/providers?language=en-US&page=1&`
   );
   const { AU } = res.results;
 
