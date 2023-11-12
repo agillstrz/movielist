@@ -10,7 +10,6 @@ import { MoviesProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
 import React, { useEffect, useState } from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
-import { InfinitySpin } from "react-loader-spinner";
 
 export default function AllMovies() {
   const [data, setDatas] = useState<Movieslist[]>([]);
@@ -18,7 +17,6 @@ export default function AllMovies() {
   const [page, setPages] = useState<number>(1);
   const [name, setName] = useState<string>("");
   const [loading, setLoading] = useState<Boolean>(false);
-  const [more, setMore] = useState<Boolean>(false);
 
   function getMovies() {
     setLoading(true);
@@ -39,12 +37,7 @@ export default function AllMovies() {
       setDatas([]);
       axiosInstance
         .get(
-          `/search/movie?query=${name}&include_adult=false&language=en-US&page=1?api_key=${CONSTANT.API_KEY}`,
-          {
-            headers: {
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3NzhhYzFmZjZmYTMzNzFjODc2M2VlNmQ1MjJjYTcxYyIsInN1YiI6IjYyZWY0NGM5NTE0YzRhMDA3YWI1MzBhZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0NK9KNXs0cpHJo4lAqNOdJRL0yHaldonQ1nX8G6E4ak`,
-            },
-          }
+          `/search/movie?query=${name}&include_adult=false&language=en-US&page=1?api_key=${CONSTANT.API_KEY}`
         )
         .then((res) => {
           setDatas(res.data.results);

@@ -8,6 +8,7 @@ export interface MoviesProps {
   overview: String;
   popularity: Number;
   poster_path: String;
+  genres: any;
   release_date: String;
   title: String;
   video: Boolean;
@@ -17,7 +18,7 @@ export interface MoviesProps {
 
 export interface MyListProps {
   id: number;
-  name: string;
+  title: string;
   img: string;
   desc: string;
 }

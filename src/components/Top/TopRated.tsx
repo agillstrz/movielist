@@ -6,26 +6,7 @@ import {
 } from "react-icons/md";
 import Card from "../card/Card";
 import { MoviesProps } from "@/utils";
-type Data = {
-  adult: Boolean;
-  backdrop_path: String;
-  genre_ids: Number[];
-  id: Number;
-  original_language: String;
-  original_title: String;
-  overview: String;
-  popularity: Number;
-  poster_path: String;
-  release_date: String;
-  title: String;
-  video: Boolean;
-  vote_average: Number;
-  vote_count: Number;
-};
 
-interface ResultsType {
-  results: Data;
-}
 export default function TopRated({ results }: any) {
   const [curr, setCurr] = useState(0);
   let datas = results.length / 5;

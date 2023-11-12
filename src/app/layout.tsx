@@ -1,10 +1,11 @@
+import Footer from "@/components/layouts/Footer";
 import Navbar from "@/components/layouts/Navbar";
-import Context from "@/context/Context";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
-import Footer from "@/components/layouts/Footer";
+import { NextAuthProvider } from "./Provider";
+import Context from "@/context/Context";
 
 const poppins = Poppins({
   weight: "400",
@@ -23,22 +24,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={poppins.className}>
-        <NextTopLoader
-          color="#B41103"
-          initialPosition={0.08}
-          crawlSpeed={200}
-          height={3}
-          crawl={true}
-          showSpinner={true}
-          easing="ease"
-          speed={200}
-          shadow="0 0 10px #B41103,0 0 5px #45c6c0"
-        />
-        <Context>
-          <Navbar />
-          {children}
-          <Footer />
-        </Context>
+        <NextAuthProvider>
+          <NextTopLoader
+            color="#B41103"
+            initialPosition={0.08}
+            crawlSpeed={200}
+            height={3}
+            crawl={true}
+            showSpinner={true}
+            easing="ease"
+            speed={200}
+            shadow="0 0 10px #B41103,0 0 5px #45c6c0"
+          />
+          <Context>
+            <Navbar />
+            {children}
+            <Footer />
+          </Context>
+        </NextAuthProvider>
       </body>
     </html>
   );

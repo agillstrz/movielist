@@ -1,5 +1,4 @@
 import { deleteCookie, getCookie, setCookie } from "cookies-next";
-import { AuthProps } from ".";
 
 const AUTH = {
   isAuthorization() {
@@ -13,11 +12,10 @@ const AUTH = {
     deleteCookie("name");
   },
 
-  storeInfoCookie(data: AuthProps) {
-    if (!data) return null;
-    setCookie("token", data.token);
-    setCookie("role", data.role);
-    setCookie("name", data.name);
+  storeInfoCookies() {
+    setCookie("token", 1);
+    setCookie("role", 2);
+    setCookie("name", 3);
   },
 };
 

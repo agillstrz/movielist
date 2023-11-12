@@ -1,25 +1,17 @@
 import CardRecommendation from "@/components/card/CardRecommendation";
 import TitleGallery from "@/components/gallery/TitleGallery";
-import ButtonGallery from "@/components/gallery/TitleGallery";
 import ModalPicture from "@/components/modals/ModalPicture";
 import AddList from "@/components/movies/AddList";
 import WatchProvider from "@/components/movies/WatchProvider";
-import axiosInstance from "@/config/axiosInstance";
 import getData from "@/service/getMovies";
+import { MoviesProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
 import Image from "next/image";
 import { AiFillPlaySquare } from "react-icons/ai";
 
-async function getRelatedMovies(id: string) {
-  const res = await axiosInstance.get(
-    `/movie/${id}/similar?language=en-US&page=1&api_key=${CONSTANT.API_KEY}`
-  );
-  return res.data;
-}
-
 export default async function page({ params }: { params: { id: string } }) {
   const { id } = params;
-  const datas = await getData(`/movie/${id}?`);
+  const datas: MoviesProps = await getData(`/movie/${id}?`);
   const { results } = await getData(
     `/movie/${id}/similar?language=en-US&page=1&`
   );
@@ -32,8 +24,8 @@ export default async function page({ params }: { params: { id: string } }) {
           backgroundImage: `url('https://image.tmdb.org/t/p/original${datas.backdrop_path}')`,
         }}
       >
-        <div className="absolute  w-full   h-screen bg-black/80" />
-        <div className="flex w-full min-h-screen items-center">
+        <div className="absolute  w-full   min-h-screen bg-black/80" />
+        <div className="flex pt-5 w-full min-h-screen items-center">
           <div className="flex lg:pt-10  pt-20 lg:flex-row flex-col   gap-x-4 h-full items-center justify-center  w-full lg:mx-10">
             <div className="lg:w-[45%]     h-[50%]  lg:h-[80%] z-20  flex  justify-center ">
               <div className="h-full  relative  lg:w-[65%] rounded-lg ">
@@ -54,7 +46,12 @@ export default async function page({ params }: { params: { id: string } }) {
             </div>
             <div className="flex lg:w-1/2 z-10   m-4 lg:m-0   items-start flex-col gap-y-3">
               <div className="flex gap-2">
-                <AddList />
+                <AddList
+                  id={id}
+                  title={datas.title}
+                  img={datas.backdrop_path}
+                  desc={datas.overview}
+                />
                 <TitleGallery
                   title={datas.title}
                   id={id}
@@ -95,10 +92,10 @@ export default async function page({ params }: { params: { id: string } }) {
                   </ul>
                 </div>
               </div>
-              <div className="flex gap-2 items-center my-3 lg:my-0 ">
+              {/* <div className="flex gap-2 items-center my-3 lg:my-0 ">
                 <h2 className="font-medium text-lg  ">Watch Providers</h2>
                 <WatchProvider id={id} />
-              </div>
+              </div> */}
               <div>
                 <h2 className="font-medium text-lg  my-3 lg:my-0 lg:mb-3">
                   Related Movies

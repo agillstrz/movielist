@@ -4,10 +4,10 @@ import { GrGallery } from "react-icons/gr";
 import React from "react";
 import { MdPhotoLibrary } from "react-icons/md";
 interface ButtonProps {
-  className?: string;
-  label: string;
-  id: string;
-  title: string;
+  className?: String;
+  label: String;
+  id: String;
+  title: String;
 }
 export default function TitleGallery({
   className,

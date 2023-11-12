@@ -1,6 +1,5 @@
 "use client";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
-import React from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { RiArrowGoBackLine } from "react-icons/ri";
 
 export default function ButtonGallery() {

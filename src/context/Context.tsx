@@ -1,12 +1,6 @@
 "use client";
 import { MyListProps } from "@/utils";
-import React, {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  createContext,
-  useState,
-} from "react";
+import { createContext, useState } from "react";
 
 export const MyContext = createContext({});
 export default function Context({ children }: any) {

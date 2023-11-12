@@ -1,10 +1,12 @@
 "use client";
-import AUTH from "@/utils/Auth";
-import React, { useState } from "react";
+import { MyContext } from "@/context/Context";
+import { getCookie } from "cookies-next";
+import { useContext, useState } from "react";
 import { MdNoteAdd } from "react-icons/md";
 
-export default function AddList() {
+export default function AddList({ id, desc, title, img }: any) {
   const [show, setShow] = useState<Boolean>(false);
+  const { setFav, fav }: any = useContext(MyContext);
 
   return (
     <>
@@ -20,7 +22,16 @@ export default function AddList() {
       )}
       <button
         onClick={() => {
-          if (AUTH.isAuthorization()) {
+          if (getCookie("token")) {
+            setFav([
+              ...fav,
+              {
+                title,
+                desc,
+                id,
+                img,
+              },
+            ]);
           } else {
             setShow(true);
             setTimeout(() => {
