@@ -23,12 +23,12 @@ export default function CardLogin() {
   const [show, setShow] = useState<boolean>(false);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    setTimeout(() => {
-      AUTH.storeInfoCookie(form);
-      setLoading(false);
-      router.push("/");
-    }, 1000);
+    // setLoading(true);
+    // setTimeout(() => {
+    //   AUTH.storeInfoCookies(form);
+    //   setLoading(false);
+    //   router.push("/");
+    // }, 1000);
   };
   return (
     <div className="w-fit absolute z-10 py-20 bg-black rounded-lg  px-10 flex justify-center items-center">
