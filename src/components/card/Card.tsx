@@ -23,12 +23,12 @@ export default function Card({ datas }: { datas: MoviesProps }) {
           <h4 className="text-lg opacity-0 group-hover:opacity-100 transition-all duration-150 ease-in text-center">
             {datas?.title}
           </h4>
-          <AddList
+          {/* <AddList
             id={datas.id}
             title={datas.title}
             img={datas.backdrop_path}
             desc={datas.overview}
-          />
+          /> */}
         </div>
       </div>
     </div>
