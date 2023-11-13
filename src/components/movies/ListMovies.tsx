@@ -1,8 +1,7 @@
 "use client";
 import { MyContext } from "@/context/Context";
 import { MoviesProps, MyListProps } from "@/utils";
-import Image from "next/image";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { RxCross1 } from "react-icons/rx";
 
 export default function ListMovies() {
@@ -22,7 +21,7 @@ export default function ListMovies() {
         fav.map((m: MyListProps) => (
           <div
             key={m.id}
-            className="lg:w-1/2 gap-x-2 p-2 items-start border h-fit rounded-lg flex relative"
+            className="lg:w-[60%] gap-x-2 p-2 items-start border h-fit rounded-lg flex relative"
           >
             <button
               onClick={(e) => handleDelete(e, m.id)}
@@ -31,7 +30,7 @@ export default function ListMovies() {
               <RxCross1 />
             </button>
             <div
-              className="w-[30%] bg-cover bg-center  border h-full"
+              className="w-[40%] bg-cover bg-center   h-full"
               style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/w500/${m.img})`,
               }}

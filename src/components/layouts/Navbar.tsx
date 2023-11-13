@@ -1,14 +1,15 @@
 "use client";
+import { MyContext } from "@/context/Context";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Profile from "../commons/Profile";
 import NavMobile from "./NavMobile";
 export default function Navbar() {
   const currentRoute = usePathname();
+  const { count }: any = useContext(MyContext);
 
   const [scroll, setScroll] = useState<Boolean>(false);
-
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 1) {
@@ -51,7 +52,17 @@ export default function Navbar() {
                 : "text-white font-medium"
             } relative h-full gap-x-1 flex items-center tracking-wide group`}
           >
-            <Link href={`${m.path}`}>{m.name}</Link>
+            <Link className="flex items-center gap-1" href={`${m.path}`}>
+              {m.name}{" "}
+              {m.path === "/my-list" && count !== 0 && (
+                <div className="relative">
+                  {/* <MdFavoriteBorder className="text-xl" /> */}
+                  <p className="absolute text-[12px] font-semibold p-1 -right-4 text-primary h-4 w-4 flex justify-center items-center rounded-full bg-white -top-4 text-center z-10">
+                    {count !== 0 && count}
+                  </p>
+                </div>
+              )}{" "}
+            </Link>
             {m.path == "/my-list" && <></>}
 
             <div

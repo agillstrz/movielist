@@ -1,7 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { GrGallery } from "react-icons/gr";
-import React from "react";
 import { MdPhotoLibrary } from "react-icons/md";
 interface ButtonProps {
   className?: String;

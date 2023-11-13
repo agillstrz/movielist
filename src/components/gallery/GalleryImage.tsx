@@ -1,6 +1,6 @@
 import CONSTANT from "@/utils/CONSTANT";
-import ModalPicture from "../modals/ModalPicture";
 import Image from "next/image";
+import ModalPicture from "../modals/ModalPicture";
 type gallery = {
   aspect_ratio: number;
   height: number;

@@ -1,4 +1,3 @@
-import React from "react";
 import { BiLogoInstagram } from "react-icons/bi";
 import { BsFacebook, BsTwitter } from "react-icons/bs";
 
