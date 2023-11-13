@@ -30,12 +30,10 @@ export default async function page({ params }: { params: { id: string } }) {
             <div className="lg:w-[45%]     h-[50%]  lg:h-[80%] z-20  flex  justify-center ">
               <div className="h-full  relative  lg:w-[65%] rounded-lg ">
                 <ModalPicture>
-                  <Image
+                  <img
                     className="lg:h-[31rem] h-[18rem]  w-full cursor-pointer rounded-lg"
                     src={`${CONSTANT.foto}${datas.poster_path}`}
                     alt="img"
-                    width={400}
-                    height={500}
                   />
                 </ModalPicture>
                 <div className="absolute flex overflow-hidden items-center  cursor-pointer transition-all duration-700 ease-in-out  group rounded-lg font-bold gap-x-2 p-3 bg-primary bottom-2 -right-8">
