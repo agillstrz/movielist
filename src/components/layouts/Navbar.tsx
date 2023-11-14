@@ -48,7 +48,7 @@ export default function Navbar() {
             key={index}
             className={` ${
               currentRoute === m.path
-                ? "font-semibold text-red-600"
+                ? "font-semibold text-[#6d28d9]"
                 : "text-white font-medium"
             } relative h-full gap-x-1 flex items-center tracking-wide group`}
           >
@@ -66,7 +66,7 @@ export default function Navbar() {
             {m.path == "/my-list" && <></>}
 
             <div
-              className={`h-[3px] bg-primary ${
+              className={`h-[3px] bg-[#6d28d9] ${
                 currentRoute === m.path ? "w-full" : "w-0"
               } absolute  left-0 bottom-0 group-hover:w-full transition-all duration-150`}
             ></div>

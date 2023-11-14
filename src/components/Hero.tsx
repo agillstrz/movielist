@@ -36,7 +36,7 @@ export default function Hero({ results }: { results: MoviesProps[] }) {
             <div className="flex gap-x-4">
               <p className="flex items-center gap-x-[2px]">
                 <span>⭐</span>
-                {movie.vote_average}
+                {movie.vote_average.toString().split(".")[0]}
               </p>
               <p>{movie.release_date}</p>
             </div>

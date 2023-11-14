@@ -2,11 +2,9 @@ import CardRecommendation from "@/components/card/CardRecommendation";
 import TitleGallery from "@/components/gallery/TitleGallery";
 import ModalPicture from "@/components/modals/ModalPicture";
 import AddList from "@/components/movies/AddList";
-import WatchProvider from "@/components/movies/WatchProvider";
 import getData from "@/service/getMovies";
 import { MoviesProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
-import Image from "next/image";
 import { AiFillPlaySquare } from "react-icons/ai";
 
 export default async function page({ params }: { params: { id: string } }) {
@@ -90,10 +88,7 @@ export default async function page({ params }: { params: { id: string } }) {
                   </ul>
                 </div>
               </div>
-              {/* <div className="flex gap-2 items-center my-3 lg:my-0 ">
-                <h2 className="font-medium text-lg  ">Watch Providers</h2>
-                <WatchProvider id={id} />
-              </div> */}
+
               <div>
                 <h2 className="font-medium text-lg  my-3 lg:my-0 lg:mb-3">
                   Related Movies

@@ -24,6 +24,7 @@ export const AuthOption: AuthOptions = {
         cookies().set("token", "value", { value: account?.access_token });
         cookies().set("img", "value", { value: profile?.image });
         cookies().set("name", "value", { value: profile?.name });
+        console.log(account);
         return true;
       } else {
         // Return false to display a default error message

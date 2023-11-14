@@ -34,7 +34,7 @@ export default function CardRecommendation({ datas }: CardMoviesProps) {
           backgroundImage: `url(https://image.tmdb.org/t/p/w500/${datas.poster_path})`,
         }}
       >
-        <div className="absolute brightness-110 shadow-2xl border text-sm font-semibold top-2 right-2  w-8  h-8 bg-primary rounded-full flex justify-center items-center">
+        <div className="absolute brightness-110 shadow-2xl border text-sm font-semibold top-2 right-2  w-8  h-8 bg-secondary rounded-full flex justify-center items-center">
           7.5
         </div>
         <div className="w-full h-full bg-gradient-to-b   flex items-end ">

@@ -7,7 +7,7 @@ export default function CardMovies({ datas }: { datas: MoviesProps }) {
   return (
     <div
       onClick={() => router.push(`/movies/${datas.id}`)}
-      className="h-[19rem]   border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-red-600 flex flex-col gap-y-2 w-full  rounded-xl overflow-hidden"
+      className="h-[19rem]   border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-secondary flex flex-col gap-y-2 w-full  rounded-xl overflow-hidden"
     >
       <div
         className="h-full relative group  w-full bg-cover bg-center "
@@ -15,7 +15,7 @@ export default function CardMovies({ datas }: { datas: MoviesProps }) {
           backgroundImage: `url(https://image.tmdb.org/t/p/w500/${datas.poster_path})`,
         }}
       >
-        <div className="absolute brightness-110 shadow-2xl border text-sm font-semibold bottom-2 right-2  w-10  h-10 bg-primary rounded-full flex justify-center items-center">
+        <div className="absolute brightness-110 shadow-2xl border text-sm font-semibold bottom-2 right-2  w-10  h-10 bg-secondary rounded-full flex justify-center items-center">
           7.5
         </div>
         <div className="absolute opacity-0 group-hover:opacity-100 gap-2 group-hover:bg-black/70 left-0 w-full h-full top-0  flex flex-col justify-center items-center">

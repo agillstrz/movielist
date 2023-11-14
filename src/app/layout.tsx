@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <NextAuthProvider>
           <NextTopLoader
-            color="#B41103"
+            color="#6d28d9"
             initialPosition={0.08}
             crawlSpeed={200}
             height={3}
