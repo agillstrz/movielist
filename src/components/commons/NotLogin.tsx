@@ -1,15 +1,16 @@
 "use client";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Button from "../Button";
 
 export default function NotLogin() {
+  const { push } = useRouter();
   return (
     <div className="flex gap-x-1 items-center">
-      <Link
-        href={"/auth"}
-        className="py-2 px-7 font-semibold bg-primary rounded-lg hover:bg-primary/75 transition-all duration-150 ease-linear "
-      >
-        Login
-      </Link>
+      <Button
+        onClick={() => push("/auth")}
+        label="Login"
+        className="py-2 px-7 "
+      />
     </div>
   );
 }

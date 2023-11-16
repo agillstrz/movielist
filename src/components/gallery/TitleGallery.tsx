@@ -1,30 +1,24 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { title } from "process";
 import { MdPhotoLibrary } from "react-icons/md";
+import Button from "../Button";
 interface ButtonProps {
-  className?: String;
-  label: String;
   id: String;
   title: String;
 }
-export default function TitleGallery({
-  className,
-  label,
-  id,
-  title,
-}: ButtonProps) {
-  const route = useRouter();
+export default function TitleGallery({ title, id }: ButtonProps) {
+  const { push } = useRouter();
   const handleNavigate = () => {
     // route.push(`/movies/gallery/${id}?title=${title}`);
-    route.push(`/auth`);
+    push(`/auth`);
   };
   return (
-    <button
+    <Button
+      label="Gallery"
+      icon={<MdPhotoLibrary />}
+      className="py-2 px-4 hover:scale-105"
       onClick={handleNavigate}
-      className={`${className} flex gap-1  text-white items-center py-2 px-4 hover:scale-105 transition-all duration-150 ease-linear active:scale-90 rounded-lg bg-primary font-semibold  `}
-    >
-      <MdPhotoLibrary />
-      {label}
-    </button>
+    />
   );
 }

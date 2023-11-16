@@ -1,6 +1,7 @@
 module.exports = {
   future: { webpack5: true },
   images: {
+    domains: ["tdmb.api"],
     remotePatterns: [
       {
         protocol: "https",

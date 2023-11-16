@@ -19,7 +19,7 @@ export default function ModalPicture({ children }: { children: ReactNode }) {
           onClick={close}
           className="fixed   lg:h-screen w-full top-0 flex justify-center items-center bg-black/80 backdrop-blur-sm z-[9999]  left-0 right-0 bottom-0"
         >
-          <div className="bg-white w-1/2  overflow-hidden rounded-lg h-72">
+          <div className="bg-white w-[30%] overflow-hidden rounded-lg h-[70%]">
             {children}
           </div>
         </div>

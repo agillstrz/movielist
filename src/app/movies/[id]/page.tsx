@@ -48,12 +48,7 @@ export default async function page({ params }: { params: { id: string } }) {
                   img={datas.backdrop_path}
                   desc={datas.overview}
                 />
-                <TitleGallery
-                  title={datas.title}
-                  id={id}
-                  label="Gallery"
-                  className="px-3"
-                />
+                <TitleGallery title={datas.title} id={id} />
               </div>
               <div className="flex flex-col   gap-x-4">
                 <h1 className="font-semibold  tracking-widest text-md lg:text-2xl">

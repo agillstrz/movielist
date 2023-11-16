@@ -4,6 +4,7 @@ import { MoviesProps } from "@/utils";
 import { getCookie } from "cookies-next";
 import { useContext, useState } from "react";
 import { MdNoteAdd } from "react-icons/md";
+import Button from "../Button";
 
 export default function AddList({ id, desc, title, img }: any) {
   const [show, setShow] = useState<Boolean>(false);
@@ -46,13 +47,13 @@ export default function AddList({ id, desc, title, img }: any) {
           </div>
         </div>
       )}
-      <button
+
+      <Button
+        label="Add List"
+        icon={<MdNoteAdd />}
+        className="py-2 px-4 hover:scale-105"
         onClick={handleAddList}
-        className="py-2 flex items-center gap-1 px-4 hover:scale-105 transition-all duration-150 ease-linear active:scale-90 rounded-lg bg-primary font-semibold"
-      >
-        <MdNoteAdd />
-        Add List
-      </button>
+      />
     </>
   );
 }
