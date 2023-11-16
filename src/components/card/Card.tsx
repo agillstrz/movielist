@@ -1,7 +1,6 @@
 "use client";
 import { MoviesProps } from "@/utils";
 import { useRouter } from "next/navigation";
-import AddList from "../movies/AddList";
 
 export default function Card({ datas }: { datas: MoviesProps }) {
   const router = useRouter();

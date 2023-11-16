@@ -1,6 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React from "react";
 type Data = {
   adult: Boolean;
   backdrop_path: String;

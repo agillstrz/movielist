@@ -1,5 +1,4 @@
 import TittleGallery from "@/components/commons/ButtonGallery";
-import PrevPage from "@/components/commons/ButtonGallery";
 import GalleryImage from "@/components/gallery/GalleryImage";
 import CONSTANT from "@/utils/CONSTANT";
 import axios from "axios";

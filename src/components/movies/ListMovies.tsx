@@ -21,7 +21,7 @@ export default function ListMovies() {
         fav.map((m: MyListProps) => (
           <div
             key={m.id}
-            className="lg:w-[60%] gap-x-2 p-2 items-start border h-fit rounded-lg flex relative"
+            className="lg:w-[60%]  gap-x-2 p-2 items-start border h-fit rounded-lg flex relative"
           >
             <button
               onClick={(e) => handleDelete(e, m.id)}

@@ -9,6 +9,12 @@ module.exports = {
         port: "",
         pathname: "/data/icons/film-making-flat/60/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.themoviedb.org",
+        port: "",
+        pathname: "/t/p/original/**",
+      },
     ],
   },
 };

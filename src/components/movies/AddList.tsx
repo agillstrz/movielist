@@ -5,18 +5,25 @@ import { getCookie } from "cookies-next";
 import { useContext, useState } from "react";
 import { MdNoteAdd } from "react-icons/md";
 import Button from "../Button";
-
+interface modalProps {
+  message?: string;
+  show?: boolean;
+}
 export default function AddList({ id, desc, title, img }: any) {
-  const [show, setShow] = useState<Boolean>(false);
+  const [modal, setModal] = useState<modalProps>({
+    message: "",
+    show: false,
+  });
   const { setFav, fav }: any = useContext(MyContext);
 
   const handleAddList = () => {
     const hasil = fav.find((n: MoviesProps) => n.id == id);
     if (hasil) {
-      setShow(true);
+      setModal({ show: true, message: "Movie has beed added" });
       setTimeout(() => {
-        setShow(false);
+        setModal({ show: false, message: "" });
       }, 1000);
+      return;
     }
     if (getCookie("token")) {
       setFav([
@@ -29,20 +36,20 @@ export default function AddList({ id, desc, title, img }: any) {
         },
       ]);
     } else {
-      setShow(true);
+      setModal({ show: true, message: "!" });
       setTimeout(() => {
-        setShow(false);
+        setModal({ show: false, message: "" });
       }, 1000);
     }
   };
   return (
     <>
-      {show && (
+      {modal.show && (
         <div className="h-screen bg-black/40 fixed z-[9999] top-0  left-0 w-full flex justify-center items-center ">
           <div className="bg-white text-black w-56 h-fit flex flex-col  items-center rounded-lg py-4">
             <h1 className="text-lg font-semibold">Login Terlebih Dahulu</h1>
             <button className="p-2 rounded-full text-black bg-secondary border border-white">
-              ❕
+              <p>{modal.message}</p>
             </button>
           </div>
         </div>
