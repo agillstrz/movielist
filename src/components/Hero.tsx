@@ -1,7 +1,6 @@
 "use client";
 import { MoviesProps } from "@/utils";
 import { useEffect, useState } from "react";
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
 export default function Hero({ results }: { results: MoviesProps[] }) {
   const [next, setNext] = useState(0);

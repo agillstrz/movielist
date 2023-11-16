@@ -104,7 +104,7 @@ export default function CardLogin() {
       <div className="flex flex-col gap-2">
         <button
           onClick={() => signIn("github")}
-          className="w-full justify-center py-3 font-medium bg-base rounded-md text-lg flex items-center gap-1"
+          className="w-full justify-center py-3 font-medium bg-base rounded-md text-lg flex items-center gap-1 hover:border-secondary border border-transparent hover:bg-base/80 transition-all duration-150 ease-in-out"
         >
           <BsGithub />
           Masuk dengan Github
@@ -116,7 +116,7 @@ export default function CardLogin() {
         </div>
         <button
           onClick={() => signIn("google")}
-          className="w-full justify-center text-black py-3 font-medium bg-white rounded-md text-lg flex items-center gap-1"
+          className="w-full justify-center hover:border-secondary border hover:bg-white/80 transition-all duration-150 ease-in-out text-black py-3 font-medium bg-white rounded-md text-lg flex items-center gap-1"
         >
           <FcGoogle />
           Masuk dengan Google

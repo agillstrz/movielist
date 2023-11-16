@@ -5,10 +5,11 @@ import { usePathname } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import Profile from "../commons/Profile";
 import NavMobile from "./NavMobile";
+import SearchMovies from "@/service/SearchMovies";
 export default function Navbar() {
   const currentRoute = usePathname();
   const { count }: any = useContext(MyContext);
-
+  const { handleSearch, setName } = SearchMovies();
   const [scroll, setScroll] = useState<Boolean>(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -41,8 +42,8 @@ export default function Navbar() {
         scroll && "  bg-base/40    "
       } justify-between  items-center`}
     >
-      <button className="z-[999]">zeMovies</button>
       <ul className=" hidden lg:flex items-center h-full relative text-md gap-x-14 justify-between">
+        <button className="z-[999]">zeMovies</button>
         {menus.map((m, index) => (
           <li
             key={index}
@@ -75,6 +76,14 @@ export default function Navbar() {
       </ul>
       <NavMobile />
       <div className="lg:flex hidden relative items-center gap-x-2">
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Find Movies"
+            className="w-44 h-full outline-none focus:border-secondary transition-all duration-150 ease-in-out text-white bg-primary p-2 rounded-lg border-transparent border"
+          />
+        </form>
         <Profile />
       </div>
     </div>

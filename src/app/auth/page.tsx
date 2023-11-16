@@ -3,10 +3,6 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { AuthOption } from "../api/auth/[...nextauth]/route";
 import "./login.css";
-import Image from "next/image";
-import { BsGithub } from "react-icons/bs";
-import { FcGoogle } from "react-icons/fc";
-import { signIn } from "next-auth/react";
 
 export default async function Auth() {
   const session = await getServerSession(AuthOption);

@@ -1,17 +1,20 @@
 "use client";
-
 import CardMovies from "@/components/card/CardMovies";
-import Genre from "@/components/genre/Genre";
 import SearchMovies from "@/service/SearchMovies";
 import { GetDatas } from "@/service/getDatas";
-import { useState } from "react";
-import { BiSolidDownArrow } from "react-icons/bi";
+import { MoviesProps } from "@/utils";
+import { useSearchParams } from "next/navigation";
+export default function MovieResults() {
+  const searchParams = useSearchParams();
+  const keyword: string | null = searchParams.get("search");
+  const { data, loading }: { data: MoviesProps[]; loading: boolean } = GetDatas(
+    {
+      key: keyword,
+      url: `/search/movie?query=${keyword}&include_adult=false&language=en-US`,
+    }
+  );
 
-export default function AllMovies() {
-  const [show, setShow] = useState<boolean>(false);
-  const { data, loading, setDatas } = GetDatas({ url: `/movie/now_playing` });
   const { handleSearch, setName } = SearchMovies();
-
   return (
     <>
       <div className="mb-4  overflow-hidden">
@@ -28,30 +31,14 @@ export default function AllMovies() {
             />
           </form>
         </div>
-        <div
-          className={`flex relative flex-wrap  gap-y-2 transition-all duration-300 ease-in  items-center mt-5 gap-x-2 ${
-            show ? "lg:h-[80px]" : "lg:h-9"
-          }`}
-        >
-          <button
-            // onClick={() => getMovies()}
-            className="px-3 py-1 font-bold text-sm hover:bg-primary/80    bg-primary rounded-full"
-          >
-            All
-          </button>
-          <Genre setDatas={setDatas} />
-          <button
-            onClick={() => setShow(!show)}
-            className={`absolute ${
-              show && "rotate-[180deg] text-primary"
-            } text-lg md:block hidden right-0 transition-all duration-300 ease-in `}
-          >
-            <BiSolidDownArrow />
-          </button>
-        </div>
       </div>
+      {!loading && data.length <= 0 && (
+        <div className="h-screen flex justify-center w-full">
+          <p>Data Not Found</p>
+        </div>
+      )}
       <div className="flex w-full  justify-center">
-        <div className="grid hfull  w-full  place-items-center gap-3 lg:gap-y-3 lg:gap-x-5 grid-cols-2 lg:grid-cols-5">
+        <div className="grid h-full  w-full  place-items-center gap-3 lg:gap-y-3 lg:gap-x-5 grid-cols-2 lg:grid-cols-5">
           {loading
             ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((m) => (
                 <div

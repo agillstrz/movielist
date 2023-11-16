@@ -15,7 +15,8 @@ export default function TitleGallery({
 }: ButtonProps) {
   const route = useRouter();
   const handleNavigate = () => {
-    route.push(`/movies/gallery/${id}?title=${title}`);
+    // route.push(`/movies/gallery/${id}?title=${title}`);
+    route.push(`/auth`);
   };
   return (
     <button
