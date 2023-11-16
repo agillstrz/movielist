@@ -13,7 +13,7 @@ module.exports = {
         protocol: "https",
         hostname: "www.themoviedb.org",
         port: "",
-        pathname: "/t/p/original/**",
+        pathname: "**/t/p/original/**",
       },
     ],
   },
