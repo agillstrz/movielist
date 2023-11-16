@@ -1,3 +1,6 @@
+"use client";
+import { useRouter } from "next/router";
+
 interface ButtonProps {
   className?: string;
   icon?: any;
@@ -11,6 +14,8 @@ export default function Button({
   label,
   icon,
 }: ButtonProps) {
+  const route = useRouter();
+  console.log(route.isReady());
   return (
     <button
       onClick={onClick}
