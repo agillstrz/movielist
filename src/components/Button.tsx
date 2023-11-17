@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface ButtonProps {
   className?: string;
@@ -13,9 +13,9 @@ export default function Button({
   label,
   icon,
 }: ButtonProps) {
+  const { push } = useRouter();
   return (
     <button
-      onClick={onClick}
       className={`${className} flex items-center gap-1 justify-center bg-primary rounded-lg  font-semibold tracking-wide transition-all duration-150 ease-in-out hover:border-secondary border border-transparent active:scale-90`}
     >
       {icon && icon}

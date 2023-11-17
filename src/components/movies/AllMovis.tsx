@@ -4,12 +4,18 @@ import CardMovies from "@/components/card/CardMovies";
 import Genre from "@/components/genre/Genre";
 import SearchMovies from "@/service/SearchMovies";
 import { GetDatas } from "@/service/getDatas";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
 
 export default function AllMovies() {
   const [show, setShow] = useState<boolean>(false);
-  const { data, loading, setDatas } = GetDatas({ url: `/movie/now_playing` });
+  const { push, replace } = useRouter();
+  const { data, loading, setDatas, currentPage, setLoading, totalPage } =
+    GetDatas({
+      url: `/movie/now_playing`,
+    });
   const { handleSearch, setName } = SearchMovies();
 
   return (
@@ -39,7 +45,7 @@ export default function AllMovies() {
           >
             All
           </button>
-          <Genre setDatas={setDatas} />
+          <Genre setLoading={setLoading} setDatas={setDatas} />
           <button
             onClick={() => setShow(!show)}
             className={`absolute ${
@@ -61,6 +67,33 @@ export default function AllMovies() {
               ))
             : data.map((m: any) => <CardMovies key={m.id} datas={m} />)}
         </div>
+      </div>
+      <div className="flex flex-wrap w-full justify-center mt-5 gap-2">
+        {/* {new Array(totalPage).fill(1).map((m, index) => (
+          <button
+            key={index}
+            onClick={() => replace(`/movies?page=${index + 1}`)}
+            className={`p-2 border border-white rounded-lg ${
+              currentPage == index + 1 &&
+              "border-secondary bg-secondary text-white"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))} */}
+
+        <button
+          onClick={() => replace(`/movies?page=${Number(currentPage) - 1}`)}
+          className={`p-2 px-5 border border-white hover:bg-secondary rounded-lg `}
+        >
+          Prev
+        </button>
+        <button
+          onClick={() => replace(`/movies?page=${Number(currentPage) + 1}`)}
+          className={`p-2 px-5 border border-white hover:bg-secondary rounded-lg `}
+        >
+          Next
+        </button>
       </div>
     </>
   );

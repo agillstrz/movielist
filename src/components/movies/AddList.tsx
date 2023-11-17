@@ -9,7 +9,13 @@ interface modalProps {
   message?: string;
   show?: boolean;
 }
-export default function AddList({ id, desc, title, img }: any) {
+interface buttonProps {
+  id: number | String;
+  desc: String;
+  title: String;
+  img: String;
+}
+export default function AddList({ id, desc, title, img }: buttonProps) {
   const [modal, setModal] = useState<modalProps>({
     message: "",
     show: false,
@@ -36,7 +42,7 @@ export default function AddList({ id, desc, title, img }: any) {
         },
       ]);
     } else {
-      setModal({ show: true, message: "!" });
+      setModal({ show: true, message: "" });
       setTimeout(() => {
         setModal({ show: false, message: "" });
       }, 1000);
