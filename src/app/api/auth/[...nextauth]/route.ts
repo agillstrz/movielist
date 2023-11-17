@@ -9,8 +9,8 @@ export const AuthOption: AuthOptions = {
   },
   providers: [
     GithubProvider({
-      clientId: "bf2c7bd6b481440c2bfb",
-      clientSecret: "2d127f411c464fe4da89f0c359f88f170c098cd8",
+      clientId: process.env.GITHUB_ID || "",
+      clientSecret: process.env.GITHUB_SECRET || "",
     }),
     GoogleProvider({
       clientId: process.env.NEXT_GOOLE_ID || "",
@@ -24,7 +24,6 @@ export const AuthOption: AuthOptions = {
         cookies().set("token", "value", { value: account?.access_token });
         cookies().set("img", "value", { value: profile?.image });
         cookies().set("name", "value", { value: profile?.name });
-        console.log(account);
         return true;
       } else {
         // Return false to display a default error message
