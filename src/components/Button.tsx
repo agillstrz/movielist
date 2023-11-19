@@ -13,7 +13,6 @@ export default function Button({
   label,
   icon,
 }: ButtonProps) {
-  const { push } = useRouter();
   return (
     <button
       onClick={onClick}
