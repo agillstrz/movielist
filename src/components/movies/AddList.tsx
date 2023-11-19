@@ -25,7 +25,7 @@ export default function AddList({ id, desc, title, img }: buttonProps) {
   const handleAddList = () => {
     const hasil = fav.find((n: MoviesProps) => n.id == id);
     if (hasil) {
-      setModal({ show: true, message: "Movie has beed added" });
+      setModal({ show: true, message: "Movie Sudah Ada" });
       setTimeout(() => {
         setModal({ show: false, message: "" });
       }, 1000);
