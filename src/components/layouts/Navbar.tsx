@@ -6,10 +6,14 @@ import { usePathname } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import Profile from "../commons/Profile";
 import NavMobile from "./NavMobile";
+import { IoSearch } from "react-icons/io5";
+import Modal from "../modals/Modal";
+import HookModal from "@/hooks/HookModal";
 export default function Navbar() {
   const currentRoute = usePathname();
   const { count }: any = useContext(MyContext);
-  const { handleSearch, setName } = SearchMovies();
+  const { modal, setModal } = HookModal();
+  const { handleSearch, setName } = SearchMovies(setModal);
   const [scroll, setScroll] = useState<Boolean>(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -75,14 +79,22 @@ export default function Navbar() {
       </ul>
       <NavMobile />
       <div className="lg:flex hidden relative items-center gap-x-2">
-        <form onSubmit={handleSearch}>
-          <input
-            type="text"
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Find Movies..."
-            className="w-44 h-full outline-none focus:border-secondary transition-all duration-150 ease-in-out text-white bg-primary p-2 rounded-lg border-transparent border"
-          />
-        </form>
+        <Modal modal={modal} setModal={setModal} label={<IoSearch size={25} />}>
+          <form
+            className="bg-base rounded-lg w-[30rem] py-5 px-5"
+            onSubmit={handleSearch}
+          >
+            <div className="flex items-center gap-2">
+              <IoSearch size={25} className="text-secondary" />
+              <input
+                type="text"
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Search Movie"
+                className="w-full h-full outline-none border-secondary transition-all duration-150 ease-in-out text-white bg-primary p-2 rounded-lg  border"
+              />
+            </div>
+          </form>
+        </Modal>
         <Profile />
       </div>
     </div>

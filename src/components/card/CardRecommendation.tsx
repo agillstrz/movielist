@@ -8,10 +8,10 @@ export default function CardRecommendation({ datas }: { datas: MoviesProps }) {
   return (
     <div
       onClick={() => router.push(`/movies/${datas.id}`)}
-      className="h-[23rem] w-56 border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-red-600 flex flex-col gap-y-2 rounded-xl "
+      className="lg:h-[23rem] h-[14rem] w-auto lg:w-56 border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-red-600 flex flex-col gap-y-2 rounded-xl "
     >
       <div
-        className="h-full relative bg-cover bg-center flex flex-col overflow-hidden  w-56 "
+        className="h-full relative bg-cover bg-center flex flex-col overflow-hidden  w-36 lg:w-56 "
         style={{
           backgroundImage: `url(${CONSTANT.poster}${datas.poster_path})`,
         }}
