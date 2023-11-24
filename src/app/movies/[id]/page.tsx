@@ -1,105 +1,53 @@
-import CardRecommendation from "@/components/card/CardRecommendation";
-import TitleGallery from "@/components/gallery/TitleGallery";
-import ModalPicture from "@/components/modals/ModalPicture";
-import AddList from "@/components/movies/AddList";
+import Reccomendation from "@/components/movies/Reccomendation";
 import getData from "@/service/getMovies";
 import { MoviesProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
 import Image from "next/image";
-import { AiFillPlaySquare } from "react-icons/ai";
 
 export default async function page({ params }: { params: { id: string } }) {
   const { id } = params;
   const datas: MoviesProps = await getData(`/movie/${id}?`);
-  const { results } = await getData(
-    `/movie/${id}/similar?language=en-US&page=1&`
-  );
+
   return (
-    <div
-      className="  w-full relative bg-cover  bg-center"
-      style={{
-        backgroundImage: `url('https://image.tmdb.org/t/p/original${datas.backdrop_path}')`,
-      }}
-    >
-      <div className="absolute  w-full   min-h-screen bg-black/80" />
-      <div className="flex pt-5 w-full min-h-screen items-center">
-        <div className="flex lg:pt-10  pt-20 lg:flex-row flex-col   gap-x-4 h-full items-center justify-center  w-full lg:mx-10">
-          <div className="lg:w-[45%]     h-[50%]  lg:h-[80%] z-20  flex  justify-center ">
-            <div className="h-full  relative  lg:w-[65%] rounded-lg ">
-              <ModalPicture>
-                <Image
-                  alt="img"
-                  height={0}
-                  width={0}
-                  sizes="100vw"
-                  className="lg:h-[31rem] h-[18rem]  w-full cursor-pointer rounded-lg"
-                  style={{ width: "auto", height: "auto" }} // optional
-                  src={`${CONSTANT.foto}${datas.poster_path}`}
-                />
-              </ModalPicture>
-              <div className="absolute flex overflow-hidden items-center  cursor-pointer transition-all duration-700 ease-in-out  group rounded-lg font-bold gap-x-2 p-3 bg-primary bottom-2 -right-8">
-                <AiFillPlaySquare className="lg:text-[40px] group-hover:animate-pulse " />
-                <p className=" group-hover:visible ">Play</p>
-              </div>
-            </div>
+    <div className="  overflow-hidden">
+      <div
+        className="  w-full relative bg-cover  h-screen  bg-center"
+        style={{
+          backgroundImage: `url('https://image.tmdb.org/t/p/original${datas.backdrop_path}')`,
+        }}
+      >
+        <div className="absolute  w-full h-screen bg-gradient-to-t z-10 from-black to-black/50" />
+        <div className="flex flex-col lg:flex-row gap-4 layouts items-center min-h-screen">
+          <div className="w-auto rounded-md overflow-hidden  z-20 h-[23rem]">
+            <Image
+              src={`${CONSTANT.foto}${datas.poster_path}`}
+              width={200}
+              height={200}
+              alt="movies"
+              className="w-full h-full"
+            />
           </div>
-          <div className="flex lg:w-1/2 z-10   m-4 lg:m-0   items-start flex-col gap-y-3">
-            <div className="flex gap-2">
-              <AddList
-                id={id}
-                title={datas.title}
-                img={datas.backdrop_path}
-                desc={datas.overview}
-              />
-              <TitleGallery title={datas.title} id={id} />
+          <div className="flex flex-col lg:w-1/3  gap-2 z-20">
+            <h2 className="font-bold text-3xl tracking-wider">{datas.title}</h2>
+            <div className="flex text-sm gap-2 font-medium">
+              <span>{datas.release_date}</span>
+              <span>{datas.vote_average}</span>
             </div>
-            <div className="flex flex-col   gap-x-4">
-              <h1 className="font-semibold  tracking-widest text-md lg:text-2xl">
-                {datas.title}
-              </h1>
-              <div className="flex gap-x-2 items-center">
-                <p className="flex items-center gap-x-[2px]">
-                  <span>⭐</span>
-                  {datas?.vote_average.toString().split(".")[0]}
-                </p>
-                <p>2018</p>
-                <p>2 Seasons</p>
-              </div>
+            <div className="flex gap-1">
+              {datas.genres.map((genre: any) => (
+                <span
+                  key={genre.id}
+                  className="rounded-md px-2 py-1 bg-zinc-600 text-white"
+                >
+                  {genre.name}
+                </span>
+              ))}
             </div>
-
-            <p className="text-sm">{datas.overview}</p>
-            <div className="flex text-sm gap-x-5">
-              <div className="flex text-md text-zinc-400 flex-col gap-y-1">
-                <p>Release date</p>
-                <p>Created by</p>
-                <p>Genre</p>
-              </div>
-              <div className="flex text-md  flex-col gap-y-1">
-                <p>{datas?.release_date}</p>
-                <p>Created by</p>
-                <ul className="flex gap-x-1">
-                  {datas?.genres.map((m: { id: any; name: String }) => (
-                    <li key={m.id} className="font-medium">
-                      {m.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="font-medium text-lg  my-3 lg:my-0 lg:mb-3">
-                Related Movies
-              </h2>
-              <div className="flex gap-x-2">
-                {results.slice(0, 3).map((m: any, index: number) => (
-                  <CardRecommendation key={index} datas={m} />
-                ))}
-              </div>
-            </div>
+            <p>{datas.overview}</p>
           </div>
         </div>
       </div>
+      <Reccomendation id={id} />
     </div>
   );
 }

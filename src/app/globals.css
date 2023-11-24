@@ -22,6 +22,9 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: white; /* Warna thumb scrollbar */
 }
+::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Warna thumb scrollbar */
+}
 
 /* Mengganti warna thumb ketika dihover */
 ::-webkit-scrollbar-thumb:hover {
