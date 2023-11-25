@@ -1,7 +1,5 @@
 "use client";
-import axiosInstance from "@/config/axiosInstance";
 import { GenreProps } from "@/utils";
-import CONSTANT from "@/utils/CONSTANT";
 const genre = [
   {
     id: 28,
@@ -80,7 +78,7 @@ const genre = [
     name: "Western",
   },
 ];
-export default function Genre({ setDatas, setLoading }: any) {
+export default function Genre() {
   // const [genre, setGenre] = useState<any>([]);
 
   // function getGenre() {
@@ -91,20 +89,13 @@ export default function Genre({ setDatas, setLoading }: any) {
   //     });
   // }
 
-  const getByGenre = (id: number) => {
-    setDatas([]);
-    setLoading(true);
-    axiosInstance
-      .get(`/discover/movie?api_key=${CONSTANT.API_KEY}&with_genres=${id}`)
-      .then((res) => {
-        setDatas(res.data.results);
-      })
-      .finally(() => setLoading(false));
-  };
+  // const getByGenre = (id: number) => {
+  //   const { data, isLoading } = GetDatas({
+  //     url: `/discover/movie?api_key=${CONSTANT.API_KEY}&with_genres=${id}`,
+  //   });
 
-  // useEffect(() => {
-  //   getGenre();
-  // }, []);
+  //   return { data, isLoading };
+  // };
 
   return (
     <>
@@ -117,7 +108,7 @@ export default function Genre({ setDatas, setLoading }: any) {
           ))
         : genre.map((genres: GenreProps) => (
             <button
-              onClick={() => getByGenre(genres.id)}
+              // onClick={() => getByGenre(genres.id)}
               key={genres.id}
               className="px-3 py-1 font-bold text-sm hover:bg-primary/80    bg-primary rounded-full "
             >

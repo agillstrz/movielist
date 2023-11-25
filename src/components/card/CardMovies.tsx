@@ -3,7 +3,6 @@ import { MoviesProps } from "@/utils";
 import { useRouter } from "next/navigation";
 export default function CardMovies({ datas }: { datas: MoviesProps }) {
   const router = useRouter();
-
   return (
     <div
       onClick={() => router.push(`/movies/${datas.id}`)}
@@ -16,7 +15,7 @@ export default function CardMovies({ datas }: { datas: MoviesProps }) {
         }}
       >
         <div className="absolute brightness-110 shadow-2xl border text-sm font-semibold bottom-2 right-2  w-10  h-10 bg-secondary rounded-full flex justify-center items-center">
-          7.5
+          {Number(datas.vote_average).toFixed(2)}
         </div>
         <div className="absolute opacity-0 group-hover:opacity-100 gap-2 group-hover:bg-black/70 left-0 w-full h-full top-0  flex flex-col justify-center items-center">
           <h4 className="text-lg opacity-0 group-hover:opacity-100 transition-all duration-150 ease-in text-center">

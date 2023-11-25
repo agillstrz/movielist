@@ -1,14 +1,14 @@
 "use client";
 import { MyContext } from "@/context/Context";
+import HookModal from "@/hooks/HookModal";
 import SearchMovies from "@/service/SearchMovies";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-import Profile from "../commons/Profile";
-import NavMobile from "./NavMobile";
 import { IoSearch } from "react-icons/io5";
+import Profile from "../commons/Profile";
 import Modal from "../modals/Modal";
-import HookModal from "@/hooks/HookModal";
+import NavMobile from "./NavMobile";
 export default function Navbar() {
   const currentRoute = usePathname();
   const { count }: any = useContext(MyContext);
@@ -87,6 +87,7 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               <IoSearch size={25} className="text-secondary" />
               <input
+                autoFocus
                 type="text"
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Search Movie"

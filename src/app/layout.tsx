@@ -6,6 +6,7 @@ import { Poppins } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { NextAuthProvider } from "./Provider";
 import "./globals.css";
+import QueryProviders from "@/libs/QueryProviders";
 
 const poppins = Poppins({
   weight: "400",
@@ -36,11 +37,13 @@ export default function RootLayout({
             speed={200}
             shadow="0 0 10px #B41103,0 0 5px #45c6c0"
           />
-          <Providers>
-            <Navbar />
-            {children}
-            <Footer />
-          </Providers>
+          <QueryProviders>
+            <Providers>
+              <Navbar />
+              {children}
+              <Footer />
+            </Providers>
+          </QueryProviders>
         </NextAuthProvider>
       </body>
     </html>

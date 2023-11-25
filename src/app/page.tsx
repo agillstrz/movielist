@@ -1,6 +1,5 @@
 import Hero from "@/components/Hero";
-import TopRated from "@/components/Top/TopRated";
-import Popular from "@/components/popular/Popular";
+import Category from "@/components/category/Category";
 import getData from "@/service/getMovies";
 
 export default async function page() {
@@ -13,8 +12,8 @@ export default async function page() {
       <div className="overflow-hidden">
         <Hero results={playing} />
       </div>
-      <TopRated results={movies} />
-      <Popular results={rated} />
+      <Category label="Popular" results={movies} />
+      <Category label="Top Rated" results={rated} />
     </>
   );
 }

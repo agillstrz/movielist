@@ -11,7 +11,7 @@ export default async function page({ params }: { params: { id: string } }) {
   return (
     <div className="  overflow-hidden">
       <div
-        className="  w-full relative bg-cover  h-screen  bg-center"
+        className="  w-full relative bg-cover  min-h-screen  bg-center"
         style={{
           backgroundImage: `url('https://image.tmdb.org/t/p/original${datas.backdrop_path}')`,
         }}
@@ -31,13 +31,13 @@ export default async function page({ params }: { params: { id: string } }) {
             <h2 className="font-bold text-3xl tracking-wider">{datas.title}</h2>
             <div className="flex text-sm gap-2 font-medium">
               <span>{datas.release_date}</span>
-              <span>{datas.vote_average}</span>
+              <span>{Number(datas.vote_average).toFixed(2)}</span>
             </div>
             <div className="flex gap-1">
               {datas.genres.map((genre: any) => (
                 <span
                   key={genre.id}
-                  className="rounded-md px-2 py-1 bg-zinc-600 text-white"
+                  className="rounded-md  text-sm px-2 py-1 bg-zinc-600 text-white"
                 >
                   {genre.name}
                 </span>

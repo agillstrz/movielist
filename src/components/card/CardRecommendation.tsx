@@ -8,16 +8,16 @@ export default function CardRecommendation({ datas }: { datas: MoviesProps }) {
   return (
     <div
       onClick={() => router.push(`/movies/${datas.id}`)}
-      className="lg:h-[23rem] h-[14rem] w-auto lg:w-56 border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-red-600 flex flex-col gap-y-2 rounded-xl "
+      className="lg:h-[18rem] h-[14rem] w-auto  lg:w-48   cursor-pointer   flex flex-col gap-y-2 rounded-xl "
     >
       <div
-        className="h-full relative bg-cover bg-center flex flex-col overflow-hidden  w-36 lg:w-56 "
+        className="hover:border-secondary border border-transparent transition-all duration-150 ease-linear h-full relative bg-cover rounded-lg overflow-hidden  bg-center flex flex-col   w-36 lg:w-48 "
         style={{
           backgroundImage: `url(${CONSTANT.poster}${datas.poster_path})`,
         }}
       >
-        <div className="absolute brightness-110 shadow-2xl border text-sm font-semibold top-2 right-2  w-8  h-8 bg-secondary rounded-full flex justify-center items-center">
-          7.5
+        <div className="absolute brightness-110 shadow-2xl border text-sm font-semibold top-2 right-2  w-10  h-10 bg-secondary rounded-full flex justify-center p-1 items-center">
+          {Number(datas.vote_average).toFixed(2)}
         </div>
         <div className="w-full h-full bg-gradient-to-b   flex items-end ">
           <h1 className="font-semibold  w-full bg-black/60  p-2 text-sm">

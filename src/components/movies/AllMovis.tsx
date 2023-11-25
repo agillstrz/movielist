@@ -4,20 +4,21 @@ import CardMovies from "@/components/card/CardMovies";
 import Genre from "@/components/genre/Genre";
 import SearchMovies from "@/service/SearchMovies";
 import { GetDatas } from "@/service/getDatas";
+import CONSTANT from "@/utils/CONSTANT";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
 
 export default function AllMovies() {
+  const currentPage = useSearchParams().get("page") || 1;
   const [show, setShow] = useState<boolean>(false);
   const { push, replace } = useRouter();
-  const { data, loading, setDatas, currentPage, setLoading, totalPage } =
-    GetDatas({
-      url: `/movie/now_playing`,
-    });
+  const { data, isLoading } = GetDatas({
+    url: `/movie/now_playing?api_key=${CONSTANT.API_KEY}&page=${currentPage}`,
+    key: Number(currentPage),
+  });
   const { handleSearch, setName } = SearchMovies();
-
   return (
     <>
       <div className="mb-4  overflow-hidden">
@@ -45,7 +46,7 @@ export default function AllMovies() {
           >
             All
           </button>
-          <Genre setLoading={setLoading} setDatas={setDatas} />
+          <Genre />
           <button
             onClick={() => setShow(!show)}
             className={`absolute ${
@@ -58,7 +59,7 @@ export default function AllMovies() {
       </div>
       <div className="flex w-full  justify-center">
         <div className="grid hfull  w-full  place-items-center gap-3 lg:gap-y-3 lg:gap-x-5 grid-cols-2 lg:grid-cols-5">
-          {loading
+          {isLoading
             ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((m) => (
                 <div
                   key={m}

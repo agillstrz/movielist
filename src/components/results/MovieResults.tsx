@@ -2,17 +2,15 @@
 import CardMovies from "@/components/card/CardMovies";
 import SearchMovies from "@/service/SearchMovies";
 import { GetDatas } from "@/service/getDatas";
-import { MoviesProps } from "@/utils";
+import CONSTANT from "@/utils/CONSTANT";
 import { useSearchParams } from "next/navigation";
 export default function MovieResults() {
   const searchParams = useSearchParams();
   const keyword: string | null = searchParams.get("search");
-  const { data, loading }: { data: MoviesProps[]; loading: boolean } = GetDatas(
-    {
-      key: keyword,
-      url: `/search/movie?query=${keyword}&include_adult=false&language=en-US`,
-    }
-  );
+  const { data, isLoading } = GetDatas({
+    url: `/search/movie?query=${keyword}&include_adult=false&language=en-US?api_key=${CONSTANT.API_KEY}`,
+    key: keyword,
+  });
 
   const { handleSearch, setName } = SearchMovies();
   return (
@@ -32,14 +30,14 @@ export default function MovieResults() {
           </form>
         </div>
       </div>
-      {!loading && data.length <= 0 && (
+      {!isLoading && data.length <= 0 && (
         <div className="h-screen flex justify-center w-full">
           <p>Data Not Found</p>
         </div>
       )}
       <div className="flex w-full  justify-center">
         <div className="grid h-full  w-full  place-items-center gap-3 lg:gap-y-3 lg:gap-x-5 grid-cols-2 lg:grid-cols-5">
-          {loading
+          {isLoading
             ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((m) => (
                 <div
                   key={m}
