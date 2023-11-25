@@ -1,5 +1,7 @@
 "use client";
 import { MoviesProps } from "@/utils";
+import CONSTANT from "@/utils/CONSTANT";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Hero({ results }: { results: MoviesProps[] }) {
@@ -28,10 +30,16 @@ export default function Hero({ results }: { results: MoviesProps[] }) {
             transform: `translateX(-${next * 100}%)`,
           }}
         >
-          <div className="absolute w-full h-full bg-black/40" />
+          <div className="absolute w-full h-full bg-gradient-to-t from-black to-black/50 " />
 
-          <div className="flex lg:w-[40%] z-10 m-4 lg:m-0  lg:mx-24 items-start flex-col gap-y-3">
-            {/* <button>{m}</button> */}
+          <div className="flex pb-5 lg:pb-0 lg:w-[40%] z-10 m-4 lg:m-0  lg:mx-24 items-start flex-col gap-y-3">
+            <Image
+              src={`${CONSTANT.foto}${movie.poster_path}`}
+              alt={"img"}
+              width={100}
+              height={100}
+              className="h-[10rem] w-auto lg:hidden"
+            />
             <div className="flex gap-x-4">
               <p className="flex items-center gap-x-[2px]">
                 <span>⭐</span>

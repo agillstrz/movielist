@@ -3,7 +3,7 @@
 import CardMovies from "@/components/card/CardMovies";
 import Genre from "@/components/genre/Genre";
 import SearchMovies from "@/service/SearchMovies";
-import { GetDatas } from "@/service/getDatas";
+import { UseFetchData } from "@/service/UseFetchData";
 import CONSTANT from "@/utils/CONSTANT";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -14,7 +14,7 @@ export default function AllMovies() {
   const currentPage = useSearchParams().get("page") || 1;
   const [show, setShow] = useState<boolean>(false);
   const { push, replace } = useRouter();
-  const { data, isLoading } = GetDatas({
+  const { data, isLoading } = UseFetchData({
     url: `/movie/now_playing?api_key=${CONSTANT.API_KEY}&page=${currentPage}`,
     key: Number(currentPage),
   });

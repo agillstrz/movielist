@@ -1,12 +1,12 @@
 import Footer from "@/components/layouts/Footer";
 import Navbar from "@/components/layouts/Navbar";
 import Providers from "@/context/Context";
+import QueryProviders from "@/libs/QueryProviders";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { NextAuthProvider } from "./Provider";
 import "./globals.css";
-import QueryProviders from "@/libs/QueryProviders";
 
 const poppins = Poppins({
   weight: "400",

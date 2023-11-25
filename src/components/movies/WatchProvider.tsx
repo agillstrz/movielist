@@ -1,4 +1,4 @@
-import getData from "@/service/getMovies";
+import getData from "@/service/FetchDataServer";
 import CONSTANT from "@/utils/CONSTANT";
 import Image from "next/image";
 

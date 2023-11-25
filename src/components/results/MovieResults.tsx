@@ -1,13 +1,13 @@
 "use client";
 import CardMovies from "@/components/card/CardMovies";
 import SearchMovies from "@/service/SearchMovies";
-import { GetDatas } from "@/service/getDatas";
+import { UseFetchData } from "@/service/UseFetchData";
 import CONSTANT from "@/utils/CONSTANT";
 import { useSearchParams } from "next/navigation";
 export default function MovieResults() {
   const searchParams = useSearchParams();
   const keyword: string | null = searchParams.get("search");
-  const { data, isLoading } = GetDatas({
+  const { data, isLoading } = UseFetchData({
     url: `/search/movie?query=${keyword}&include_adult=false&language=en-US?api_key=${CONSTANT.API_KEY}`,
     key: keyword,
   });

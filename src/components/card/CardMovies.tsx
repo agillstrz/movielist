@@ -18,9 +18,10 @@ export default function CardMovies({ datas }: { datas: MoviesProps }) {
           {Number(datas.vote_average).toFixed(2)}
         </div>
         <div className="absolute opacity-0 group-hover:opacity-100 gap-2 group-hover:bg-black/70 left-0 w-full h-full top-0  flex flex-col justify-center items-center">
-          <h4 className="text-lg opacity-0 group-hover:opacity-100 transition-all duration-150 ease-in text-center">
-            {datas?.title}
-          </h4>
+          <div className="opacity-0 text-center group-hover:opacity-100 transition-all duration-150 ease-in">
+            <h4 className="text-lg  ">{datas?.title}</h4>
+            <p>{datas.release_date.split("-")[0]}</p>
+          </div>
         </div>
       </div>
     </div>

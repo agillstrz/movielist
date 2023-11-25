@@ -5,7 +5,7 @@ import { AuthOption } from "../api/auth/[...nextauth]/route";
 import "./login.css";
 
 export default async function Auth() {
-  const session = await getServerSession(AuthOption);
+  const session = (await getServerSession(AuthOption)) || null;
   if (session) {
     redirect("/");
   }

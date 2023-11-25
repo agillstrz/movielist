@@ -1,5 +1,4 @@
 import { getServerSession } from "next-auth";
-import React from "react";
 import { AuthOption } from "../api/auth/[...nextauth]/route";
 
 export default async function page() {

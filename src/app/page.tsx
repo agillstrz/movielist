@@ -1,11 +1,11 @@
 import Hero from "@/components/Hero";
 import Category from "@/components/category/Category";
-import getData from "@/service/getMovies";
+import FetchDataServer from "@/service/FetchDataServer";
 
 export default async function page() {
-  const { results: movies } = await getData(`/movie/popular?`);
-  const { results: rated } = await getData(`/movie/top_rated?`);
-  const { results: playing } = await getData(`/movie/now_playing?`);
+  const { results: movies } = await FetchDataServer(`/movie/popular?`);
+  const { results: rated } = await FetchDataServer(`/movie/top_rated?`);
+  const { results: playing } = await FetchDataServer(`/movie/now_playing?`);
 
   return (
     <>
