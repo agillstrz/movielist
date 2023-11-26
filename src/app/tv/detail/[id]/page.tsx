@@ -7,8 +7,7 @@ import Image from "next/image";
 
 export default async function page({ params }: { params: { id: string } }) {
   const { id } = params;
-  const datas: MoviesProps = await getData(`/movie/${id}?`);
-
+  const datas: MoviesProps = await getData(`/tv/${id}?`);
   return (
     <div className=" bg-black overflow-hidden">
       <div
@@ -29,9 +28,11 @@ export default async function page({ params }: { params: { id: string } }) {
             />
           </div>
           <div className="flex flex-col lg:w-1/3  gap-2 z-20">
-            <h2 className="font-bold text-3xl tracking-wider">{datas.title}</h2>
+            <h2 className="font-bold text-3xl tracking-wider">
+              {datas?.title || datas?.name}
+            </h2>
             <div className="flex text-sm gap-2 font-medium">
-              <span>{datas.release_date}</span>
+              <span>{datas.release_date || datas.first_air_date}</span>
               <span>{Number(datas.vote_average).toFixed(2)}</span>
             </div>
             <div className="flex gap-1">
@@ -49,8 +50,8 @@ export default async function page({ params }: { params: { id: string } }) {
         </div>
       </div>
       <div className="flex flex-col gap-3 pb-4">
-        <Cast id={id} />
-        <Reccomendation id={id} />
+        <Cast type="tv" id={id} />
+        <Reccomendation type="tv" id={id} />
       </div>
     </div>
   );

@@ -7,7 +7,10 @@ export interface MoviesProps {
   original_title: String;
   overview: String;
   popularity: Number;
+  name?: string;
   poster_path: string;
+  first_air_date?: string;
+  media_type?: string;
   genres: any;
   release_date: String;
   title: String;

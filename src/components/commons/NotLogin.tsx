@@ -7,7 +7,7 @@ export default function NotLogin() {
   return (
     <div className="flex gap-x-1 items-center">
       <Button
-        onClick={() => push("auth")}
+        onClick={() => push("/auth")}
         label="Login"
         className="py-2 px-7 "
       />

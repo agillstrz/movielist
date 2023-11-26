@@ -1,13 +1,15 @@
 "use client";
 import { MoviesProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function CardRecommendation({ datas }: { datas: MoviesProps }) {
   const router = useRouter();
+  const path = usePathname();
+  const routePath = path.includes("/tv") ? "tv" : "movie";
   return (
     <div
-      onClick={() => router.push(`/movies/${datas.id}`)}
+      onClick={() => router.push(`/${routePath}/detail/${datas.id}`)}
       className="lg:h-[18rem] h-[14rem] w-auto  lg:w-48   cursor-pointer   flex flex-col gap-y-2 rounded-xl "
     >
       <div

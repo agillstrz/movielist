@@ -1,9 +1,9 @@
 "use client";
-import CardMovies from "@/components/card/CardMovies";
 import SearchMovies from "@/service/SearchMovies";
 import { UseFetchData } from "@/service/UseFetchData";
 import CONSTANT from "@/utils/CONSTANT";
 import { useSearchParams } from "next/navigation";
+import Card from "../card/Card";
 export default function MovieResults() {
   const searchParams = useSearchParams();
   const keyword: string | null = searchParams.get("search");
@@ -44,7 +44,7 @@ export default function MovieResults() {
                   className="h-[18rem] rounded-lg w-full animate-pulse bg-white/20"
                 ></div>
               ))
-            : data.map((m: any) => <CardMovies key={m.id} datas={m} />)}
+            : data.map((m: any) => <Card key={m.id} datas={m} />)}
         </div>
       </div>
     </>

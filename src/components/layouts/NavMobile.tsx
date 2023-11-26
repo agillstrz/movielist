@@ -109,9 +109,6 @@ export default function NavMobile() {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* {show && (
-        <div className="h-screen fixed bottom-0 w-full bg-black/30 blur-md left-0 top-0 right-0"></div>
-      )} */}
     </div>
   );
 }

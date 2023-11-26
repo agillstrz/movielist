@@ -9,8 +9,9 @@ export const AuthOption: AuthOptions = {
   },
   providers: [
     GithubProvider({
-      clientId: process.env.GITHUB_ID || "",
-      clientSecret: process.env.GITHUB_SECRET || "",
+      clientId:
+        "512096674039-lm9rdq2iutomrk0531njti9cmtpso08k.apps.googleusercontent.com",
+      clientSecret: "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",
     }),
     GoogleProvider({
       clientId: process.env.NEXT_GOOLE_ID || "",

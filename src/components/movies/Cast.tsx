@@ -16,8 +16,10 @@ type castProps = {
   credit_id: "613a940d9653f60043e380df";
   order: 0;
 };
-export default async function Cast({ id }: { id: string }) {
-  const { cast } = await FetchDataServer(`/movie/${id}/credits?language=en-US`);
+export default async function Cast({ id, type }: { type: string; id: string }) {
+  const { cast } = await FetchDataServer(
+    `/${type}/${id}/credits?language=en-US`
+  );
 
   return (
     <div className="grid gap-2  content ">
