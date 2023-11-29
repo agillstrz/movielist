@@ -12,7 +12,6 @@ export default function ListMovies() {
   };
   return (
     <>
-      {" "}
       {!fav ? (
         <div className="h-screen flex justify-center items-center  absolute top-0">
           tidak ada

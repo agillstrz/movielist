@@ -64,7 +64,7 @@ export default function AddList({ id, desc, title, img }: buttonProps) {
       <Button
         label="Add List"
         icon={<MdNoteAdd />}
-        className="py-2 px-3 text-sm "
+        className="py-2 px-2 text-sm "
         onClick={handleAddList}
       />
     </>

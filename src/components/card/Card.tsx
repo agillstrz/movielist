@@ -5,7 +5,11 @@ import { usePathname, useRouter } from "next/navigation";
 export default function Card({ datas }: { datas: MoviesProps }) {
   const router = useRouter();
   const path = usePathname();
-  const routePath = path.includes("/tv") ? "tv" : "movie";
+  const routePath = datas.media_type
+    ? datas.media_type
+    : path.includes("/tv")
+    ? "tv"
+    : "movie";
   return (
     <div
       onClick={() => router.push(`/${routePath}/detail/${datas.id}`)}

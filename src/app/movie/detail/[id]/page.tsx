@@ -9,7 +9,6 @@ import Image from "next/image";
 export default async function page({ params }: { params: { id: string } }) {
   const { id } = params;
   const datas: MoviesProps = await getData(`/movie/${id}?`);
-
   return (
     <div className=" bg-black overflow-hidden">
       <div
@@ -29,7 +28,7 @@ export default async function page({ params }: { params: { id: string } }) {
               className="w-full h-full"
             />
           </div>
-          <div className="flex flex-col lg:w-1/3  gap-2 z-20">
+          <div className="flex flex-col lg:w-[40%]  gap-2 z-20">
             <div className="flex items-center gap-1">
               <h2 className="font-bold text-3xl tracking-wider">
                 {datas.title}

@@ -16,8 +16,9 @@ body {
   @apply px-4 lg:px-16;
 }
 ::-webkit-scrollbar {
-  width: 10; /* Lebar scrollbar */
-  height: 10px;
+  width: 8px; /* Lebar scrollbar */
+  height: 0px;
+  border-radius: 9999px;
 }
 
 /* Mengganti warna thumb (bagian yang dapat di-geser) scrollbar */
@@ -25,7 +26,7 @@ body {
   background-color: white; /* Warna thumb scrollbar */
 }
 ::-webkit-scrollbar-thumb {
-  background-color: transparent; /* Warna thumb scrollbar */
+  background-color: #6d28d9; /* Warna thumb scrollbar */
 }
 
 /* Mengganti warna thumb ketika dihover */

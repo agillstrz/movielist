@@ -14,7 +14,7 @@ export default async function page() {
     <div className="layouts ">
       <div className="n">
         <div className="flex gap-x-4 items-center justify-between">
-          <h1 className="font-bold lg:text-3xl w-24 lg:w-36">Moviesx</h1>
+          <h1 className="font-bold lg:text-3xl w-24 lg:w-36">Movies</h1>
           <InputSearch />
         </div>
         <Category
