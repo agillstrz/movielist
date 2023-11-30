@@ -88,14 +88,15 @@ export default function Navbar() {
         </Link>
         {menus.map((m, index) => (
           <li
+            onClick={() => setToggle({ name: m.name, show: !toggle.show })}
             key={index}
             className={` ${
               currentRoute.includes(`${m.path}`)
                 ? "font-semibold text-[#6d28d9]"
                 : "text-white font-medium"
-            } relative h-full gap-x-1 flex items-center tracking-wide group`}
+            } relative cursor-pointer h-full gap-x-1 flex items-center tracking-wide group`}
           >
-            <Link className="flex  items-center gap-1" href={`${m.path}`}>
+            <span className="flex  items-center gap-1">
               {m.name}
 
               {m.path === "/my-list" && count !== 0 && (
@@ -105,32 +106,27 @@ export default function Navbar() {
                   </p>
                 </div>
               )}
-            </Link>
+            </span>
             {m.childs && (
               <>
                 <button
                   className={`${
                     toggle.name == m.name && toggle.show && "rotate-180"
                   }`}
-                  onClick={() =>
-                    setToggle({ name: m.name, show: !toggle.show })
-                  }
                 >
                   <IoIosArrowDown />
                 </button>
-                {toggle.name == m.name && toggle.show && (
-                  <div className="absolute bg-base text-white border border-white/20 shadow-md h-fit p-1  gap-2 font-semibold text-sm  w-32 rounded-md  flex flex-col inset-0 top-12 z-[999]">
-                    {m.childs.map((child, index) => (
-                      <Link
-                        href={`${m.path}/${child.path}`}
-                        key={index}
-                        className="block hover:bg-secondary/50 w-full rounded-md p-1"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                <div className="absolute hidden bg-base text-white border border-white/20 shadow-md h-fit p-1  gap-2 font-semibold text-sm  w-32 rounded-md  group-hover:flex flex-col inset-0 top-12 z-[999]">
+                  {m.childs.map((child, index) => (
+                    <Link
+                      href={`${m.path}/${child.path}`}
+                      key={index}
+                      className="block hover:bg-secondary/50 w-full rounded-md p-1"
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
               </>
             )}
             {m.path == "/my-list" && <></>}

@@ -1,9 +1,9 @@
 import Hero from "@/components/Hero";
-import CategoryHome from "@/components/category/CategoryHome";
+import Category from "@/components/category/Category";
 import FetchDataServer from "@/service/FetchDataServer";
 
 export default async function page() {
-  const { results: movies } = await FetchDataServer(`/movie/popular?`);
+  const { results: popular } = await FetchDataServer(`/movie/popular?`);
   const { results: rated } = await FetchDataServer(`/movie/top_rated?`);
   const { results: playing } = await FetchDataServer(`/movie/now_playing?`);
   const { results: trending } = await FetchDataServer(
@@ -15,9 +15,10 @@ export default async function page() {
         <Hero results={trending} />
       </div>
       <div className="content">
-        <CategoryHome label="Trending" results={trending} />
-        <CategoryHome label="Popular" results={movies} />
-        <CategoryHome label="Top Rated" results={rated} />
+        <Category label="Trending" results={trending} />
+        <Category label="Rated" results={rated} />
+        <Category label="Popular" results={popular} />
+        <Category label="Playing" results={playing} />
       </div>
     </div>
   );

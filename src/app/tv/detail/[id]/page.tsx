@@ -1,5 +1,6 @@
 import Cast from "@/components/movies/Cast";
 import Reccomendation from "@/components/movies/Reccomendation";
+import Trailer from "@/components/movies/Trailer";
 import getData from "@/service/FetchDataServer";
 import { MoviesProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
@@ -51,6 +52,7 @@ export default async function page({ params }: { params: { id: string } }) {
       </div>
       <div className="flex flex-col gap-3 pb-4">
         <Cast type="tv" id={id} />
+        <Trailer type="tv" id={id} />
         <Reccomendation type="tv" id={id} />
       </div>
     </div>

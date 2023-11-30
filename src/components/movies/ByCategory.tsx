@@ -19,7 +19,6 @@ export default function ByCategory({
     url: `/${type}/${pathName}?api_key=${CONSTANT.API_KEY}&page=${currentPage}`,
     key: `${pathName}${Number(currentPage)}`,
   });
-
   return (
     <div className="">
       <div className="grid h-full  w-full  place-items-center gap-3 lg:gap-y-3 lg:gap-x-5 grid-cols-2 lg:grid-cols-5">
@@ -27,11 +26,16 @@ export default function ByCategory({
           ? new Array(10)
               .fill(null)
               .map((m, index) => <CardLoading key={index} />)
-          : data?.map((movie: MoviesProps) => (
+          : data?.results.map((movie: MoviesProps) => (
               <Card key={movie.id} datas={movie} />
             ))}
       </div>
-      <Pagination currentPage={Number(currentPage)} />
+      {!isLoading && (
+        <Pagination
+          total={Math.floor(data?.total_results / 20)}
+          currentPage={Number(currentPage)}
+        />
+      )}
     </div>
   );
 }

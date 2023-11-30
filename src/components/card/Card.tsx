@@ -7,6 +7,8 @@ export default function Card({ datas }: { datas: MoviesProps }) {
   const path = usePathname();
   const routePath = datas.media_type
     ? datas.media_type
+    : !datas.media_type
+    ? "movie"
     : path.includes("/tv")
     ? "tv"
     : "movie";

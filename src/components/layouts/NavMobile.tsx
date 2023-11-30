@@ -4,12 +4,61 @@ import { AnimatePresence, motion } from "framer-motion";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
+const menus = [
+  {
+    name: "Movies",
+    path: "/movie",
+    childs: [
+      {
+        label: "Now Playing",
+        path: "now-playing",
+      },
+      {
+        label: "Popular",
+        path: "popular",
+      },
+      {
+        label: "Top Rated",
+        path: "top-rated",
+      },
+      {
+        label: "Up Coming",
+        path: "up-coming",
+      },
+    ],
+  },
+  {
+    name: "Tv Show",
+    path: "/tv",
+    childs: [
+      {
+        label: "Airing Today",
+        path: "airing-today",
+      },
+      {
+        label: "Popular",
+        path: "popular",
+      },
+      {
+        label: "Top Rated",
+        path: "top-rated",
+      },
+    ],
+  },
 
+  {
+    name: "My List",
+    path: "/my-list",
+  },
+];
 export default function NavMobile() {
   const [show, setShow] = useState<Boolean>(false);
   return (
     <div className="lg:hidden w-full">
-      <div className="w-full flex justify-end">
+      <div className="w-full flex justify-between">
+        <Link href={"/"} className="z-[999]">
+          zeMovies
+        </Link>
         <button
           onClick={() => setShow(!show)}
           className="flex  z-[999] lg:hidden flex-col gap-2   relative"
@@ -86,7 +135,7 @@ export default function NavMobile() {
                 </Link>
                 <Link
                   onClick={() => setShow(!show)}
-                  href={"/movies"}
+                  href={"/movie/popular"}
                   className="py-2 hover:bg-primary  border-b-primary w-full border border-transparent text-center transition-colors duration-150"
                 >
                   Movies

@@ -1,6 +1,7 @@
 import AddList from "@/components/movies/AddList";
 import Cast from "@/components/movies/Cast";
 import Reccomendation from "@/components/movies/Reccomendation";
+import Trailer from "@/components/movies/Trailer";
 import getData from "@/service/FetchDataServer";
 import { MoviesProps } from "@/utils";
 import CONSTANT from "@/utils/CONSTANT";
@@ -33,12 +34,6 @@ export default async function page({ params }: { params: { id: string } }) {
               <h2 className="font-bold text-3xl tracking-wider">
                 {datas.title}
               </h2>
-              <AddList
-                id={datas.id}
-                desc={datas.overview}
-                img={datas.poster_path}
-                title={datas.title}
-              />
             </div>
             <div className="flex text-sm gap-2 font-medium">
               <span>{datas.release_date}</span>
@@ -60,6 +55,7 @@ export default async function page({ params }: { params: { id: string } }) {
       </div>
       <div className="flex flex-col gap-3 pb-4">
         <Cast type="movie" id={id} />
+        <Trailer type="movie" id={id} />
         <Reccomendation type="movie" id={id} />
       </div>
     </div>

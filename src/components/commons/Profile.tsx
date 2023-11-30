@@ -5,6 +5,7 @@ import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
 import NotLogin from "./NotLogin";
+import CardLogin from "../card/CardLogin";
 export default function Profile() {
   const { data, status } = useSession();
   const [show, setShow] = useState<boolean>(false);
@@ -46,7 +47,7 @@ export default function Profile() {
           </button>
         </div>
       ) : (
-        <NotLogin />
+        <CardLogin />
       )}
     </>
   );
