@@ -3,6 +3,7 @@ import { MoviesProps } from "@/utils";
 import { useState } from "react";
 import { MdNoteAdd } from "react-icons/md";
 import Button from "../Button";
+import { getSession } from "next-auth/react";
 interface modalProps {
   message?: string;
   show?: boolean;
@@ -19,8 +20,15 @@ export default function AddList({ id, desc, title, img, type }: buttonProps) {
     message: "",
     show: false,
   });
-
+  const session = getSession();
   const handleAddList = () => {
+    if (!session) {
+      setModal({ show: true, message: "Anda Belum Login" });
+      setTimeout(() => {
+        setModal({ show: false });
+      }, 1000);
+      return;
+    }
     let data: any = [];
 
     const storedData = localStorage.getItem("data") || null;
@@ -30,6 +38,9 @@ export default function AddList({ id, desc, title, img, type }: buttonProps) {
       const hasil = parsedData.find((m: MoviesProps) => m.id == id);
       if (hasil) {
         setModal({ show: true, message: "Movie Sudah Ada" });
+        setTimeout(() => {
+          setModal({ show: false });
+        }, 1000);
       } else {
         localStorage.setItem(
           "data",
