@@ -59,11 +59,8 @@ export default function AddList({ id, desc, title, img, type }: buttonProps) {
     <>
       {modal.show && (
         <div className="h-screen bg-black/40 fixed z-[9999] top-0  left-0 w-full flex justify-center items-center ">
-          <div className="bg-white text-black w-56 h-fit flex flex-col  items-center rounded-lg py-4">
-            <h1 className="text-lg font-semibold">Login Terlebih Dahulu</h1>
-            <button className="p-2 rounded-full text-black bg-secondary border border-white">
-              <p>{modal.message}</p>
-            </button>
+          <div className="bg-white text-black w-56 h-fit flex flex-col px-2  items-center rounded-lg py-4">
+            <h1 className="text-lg font-semibold">{modal.message}</h1>
           </div>
         </div>
       )}
