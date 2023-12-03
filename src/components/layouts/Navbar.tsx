@@ -70,11 +70,6 @@ export default function Navbar() {
         },
       ],
     },
-
-    {
-      name: "My List",
-      path: "/my-list",
-    },
   ];
   return (
     <div
@@ -92,9 +87,9 @@ export default function Navbar() {
             key={index}
             className={` ${
               currentRoute.includes(`${m.path}`)
-                ? "font-semibold text-[#6d28d9]"
+                ? "font-semibold text-secondary"
                 : "text-white font-medium"
-            } relative cursor-pointer h-full gap-x-1 flex items-center tracking-wide group`}
+            } relative cursor-pointer h-full hover:text-secondary gap-x-1 flex items-center tracking-wide group`}
           >
             <span className="flex  items-center gap-1">
               {m.name}
@@ -129,7 +124,6 @@ export default function Navbar() {
                 </div>
               </>
             )}
-            {m.path == "/my-list" && <></>}
 
             <div
               className={`h-[3px] bg-[#6d28d9] ${
@@ -138,6 +132,9 @@ export default function Navbar() {
             ></div>
           </li>
         ))}
+        <Link className="hover:text-secondary cursor-pointer" href={"/my-list"}>
+          My List
+        </Link>
       </ul>
       <NavMobile />
       <div className="lg:flex hidden relative items-center gap-x-2">

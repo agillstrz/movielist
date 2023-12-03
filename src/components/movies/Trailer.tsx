@@ -39,7 +39,7 @@ export default function Trailer({ id, type }: { id: string; type: string }) {
                   className="rounded-lg h-[20rem] w-full overflow-hidden animate-pulse bg-white/20"
                 ></div>
               ))
-          : data.results.map((video: videoProps) => (
+          : data?.results.map((video: videoProps) => (
               <div key={video.id}>
                 <YouTube
                   opts={opts}

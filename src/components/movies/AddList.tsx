@@ -1,8 +1,6 @@
 "use client";
-import { MyContext } from "@/context/Context";
 import { MoviesProps } from "@/utils";
-import { getCookie } from "cookies-next";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { MdNoteAdd } from "react-icons/md";
 import Button from "../Button";
 interface modalProps {
@@ -14,39 +12,37 @@ interface buttonProps {
   desc: String;
   title: String;
   img: String;
+  type: any;
 }
-export default function AddList({ id, desc, title, img }: buttonProps) {
+export default function AddList({ id, desc, title, img, type }: buttonProps) {
   const [modal, setModal] = useState<modalProps>({
     message: "",
     show: false,
   });
-  const { setFav, fav }: any = useContext(MyContext);
 
   const handleAddList = () => {
-    const hasil = fav.find((n: MoviesProps) => n.id == id);
-    if (hasil) {
-      setModal({ show: true, message: "Movie Sudah Ada" });
-      setTimeout(() => {
-        setModal({ show: false, message: "" });
-      }, 1000);
-      return;
-    }
-    if (getCookie("token")) {
-      setFav([
-        ...fav,
-        {
-          title,
-          desc,
-          id,
-          img,
-        },
-      ]);
+    let data: any = [];
+
+    const storedData = localStorage.getItem("data") || null;
+
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      localStorage.setItem(
+        "data",
+        JSON.stringify([...parsedData, { id, title, desc, img, type }])
+      );
     } else {
-      setModal({ show: true, message: "" });
-      setTimeout(() => {
-        setModal({ show: false, message: "" });
-      }, 1000);
+      localStorage.setItem(
+        "data",
+        JSON.stringify([{ id, title, desc, img, type }])
+      );
     }
+    // const hasil = datas.find((m: MoviesProps) => m.id == id);
+    // if (hasil) {
+    //   setModal({ show: true, message: "Movie Sudah Ada" });
+    // } else {
+    //   localStorage.setItem("data", JSON.stringify({ id, title, desc }));
+    // }
   };
   return (
     <>

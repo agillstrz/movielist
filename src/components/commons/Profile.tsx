@@ -1,10 +1,8 @@
 "use client";
-import { deleteCookie } from "cookies-next";
 import { AnimatePresence, motion } from "framer-motion";
 import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
-import NotLogin from "./NotLogin";
 import CardLogin from "../card/CardLogin";
 export default function Profile() {
   const { data, status } = useSession();
@@ -30,7 +28,7 @@ export default function Profile() {
                 <button
                   className="font-semibold "
                   onClick={() => {
-                    deleteCookie("token");
+                    localStorage.removeItem("data");
                     signOut();
                   }}
                 >

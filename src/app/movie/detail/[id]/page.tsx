@@ -48,11 +48,18 @@ export default async function page({ params }: { params: { id: string } }) {
                   {genre.name}
                 </span>
               ))}
+              <AddList
+                desc={datas.overview}
+                title={datas.title || datas.name}
+                id={datas.id}
+                img={datas.poster_path}
+              />
             </div>
             <p>{datas.overview}</p>
           </div>
         </div>
       </div>
+
       <div className="flex flex-col gap-3 pb-4">
         <Cast type="movie" id={id} />
         <Trailer type="movie" id={id} />

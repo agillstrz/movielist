@@ -7,6 +7,8 @@ import { Poppins } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { NextAuthProvider } from "./Provider";
 import "./globals.css";
+import { getServerSession } from "next-auth";
+import { AuthOption } from "./api/auth/[...nextauth]/route";
 
 const poppins = Poppins({
   weight: "400",
@@ -24,6 +26,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/icon.png" />
+      </head>
       <body className={poppins.className}>
         <NextAuthProvider>
           <NextTopLoader
