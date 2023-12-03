@@ -27,22 +27,22 @@ export default function AddList({ id, desc, title, img, type }: buttonProps) {
 
     if (storedData) {
       const parsedData = JSON.parse(storedData);
-      localStorage.setItem(
-        "data",
-        JSON.stringify([...parsedData, { id, title, desc, img, type }])
-      );
+      const hasil = parsedData.find((m: MoviesProps) => m.id == id);
+      if (hasil) {
+        setModal({ show: true, message: "Movie Sudah Ada" });
+      } else {
+        localStorage.setItem(
+          "data",
+          JSON.stringify([...parsedData, { id, title, desc, img, type }])
+        );
+        return;
+      }
     } else {
       localStorage.setItem(
         "data",
         JSON.stringify([{ id, title, desc, img, type }])
       );
     }
-    // const hasil = datas.find((m: MoviesProps) => m.id == id);
-    // if (hasil) {
-    //   setModal({ show: true, message: "Movie Sudah Ada" });
-    // } else {
-    //   localStorage.setItem("data", JSON.stringify({ id, title, desc }));
-    // }
   };
   return (
     <>

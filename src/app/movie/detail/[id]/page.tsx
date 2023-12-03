@@ -1,4 +1,3 @@
-import AddList from "@/components/movies/AddList";
 import Cast from "@/components/movies/Cast";
 import Reccomendation from "@/components/movies/Reccomendation";
 import Trailer from "@/components/movies/Trailer";
@@ -48,12 +47,6 @@ export default async function page({ params }: { params: { id: string } }) {
                   {genre.name}
                 </span>
               ))}
-              <AddList
-                desc={datas.overview}
-                title={datas.title || datas.name}
-                id={datas.id}
-                img={datas.poster_path}
-              />
             </div>
             <p>{datas.overview}</p>
           </div>
