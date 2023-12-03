@@ -1,9 +1,9 @@
 "use client";
 import { MoviesProps } from "@/utils";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { MdNoteAdd } from "react-icons/md";
 import Button from "../Button";
-import { getSession } from "next-auth/react";
 interface modalProps {
   message?: string;
   show?: boolean;
@@ -20,9 +20,9 @@ export default function AddList({ id, desc, title, img, type }: buttonProps) {
     message: "",
     show: false,
   });
-  const session = getSession();
+  const { status } = useSession();
   const handleAddList = () => {
-    if (!session) {
+    if (status == "unauthenticated") {
       setModal({ show: true, message: "Anda Belum Login" });
       setTimeout(() => {
         setModal({ show: false });
