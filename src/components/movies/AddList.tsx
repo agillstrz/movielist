@@ -34,7 +34,7 @@ export default function AddList({ id, desc, title, img, type }: buttonProps) {
     const storedData = localStorage.getItem("data") || null;
 
     if (storedData) {
-      const parsedData = JSON.parse(storedData);
+      const parsedData: [] = JSON.parse(storedData);
       const hasil = parsedData.find((m: MoviesProps) => m.id == id);
       if (hasil) {
         setModal({ show: true, message: "Movie Sudah Ada" });
@@ -64,7 +64,6 @@ export default function AddList({ id, desc, title, img, type }: buttonProps) {
           </div>
         </div>
       )}
-
       <Button
         label="Add List"
         icon={<MdNoteAdd />}

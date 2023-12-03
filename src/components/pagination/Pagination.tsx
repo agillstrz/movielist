@@ -29,7 +29,7 @@ export default function Pagination({
             <button
               onClick={() => replace(`?page=${page}`)}
               key={index}
-              className={`px-4 py-1 rounded-lg border  ${
+              className={`px-4 py-1 rounded-lg border hover:bg-white hover:text-secondary  ${
                 currentPage == page && "bg-white text-secondary"
               }`}
             >
