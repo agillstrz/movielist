@@ -29,7 +29,7 @@ export default function Modal({
           <div
             ref={modalRef}
             onClick={close}
-            className="fixed   lg:h-screen w-full top-0 flex justify-center items-center bg-black/80 backdrop-blur-sm z-[9999]  left-0 right-0 bottom-0"
+            className="fixed   h-screen w-full top-0 flex justify-center items-center bg-black/80 backdrop-blur-sm z-[9999]  left-0 right-0 bottom-0"
           >
             <motion.div
               initial={{ scale: 0 }}

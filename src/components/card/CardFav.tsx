@@ -17,7 +17,7 @@ export default function CardFav({ session }: any) {
   if (storedData == null || data.length == 0) {
     return (
       <div className="flex absolute inset-0 items-center justify-center h-screen">
-        nothing
+        Tidak Ada
       </div>
     );
   }

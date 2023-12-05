@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
+import ModalSearch from "../modals/ModalSearch";
 const menus = [
   {
     name: "Movies",
@@ -59,26 +60,29 @@ export default function NavMobile() {
         <Link href={"/"} className="z-[999]">
           zeMovies
         </Link>
-        <button
-          onClick={() => setShow(!show)}
-          className="flex  z-[999] lg:hidden flex-col gap-2   relative"
-        >
-          <span
-            className={`h-[2px] ${
-              show && "rotate-[45deg] right-1 absolute"
-            }    bg-white w-8 transition-all duration-300 ease-out`}
-          ></span>
-          <span
-            className={`h-[2px] transition-all duration-300 ease-out bg-white  ${
-              show ? "w-0" : "w-8"
-            }`}
-          ></span>
-          <span
-            className={`h-[2px] bg-white w-8 ${
-              show && "-rotate-[45deg] absolute right-1"
-            }  transition-all duration-300 ease-out`}
-          ></span>
-        </button>
+        <div className="flex items-center gap-2">
+          <ModalSearch />
+          <button
+            onClick={() => setShow(!show)}
+            className="flex  z-[999] lg:hidden flex-col gap-2   relative"
+          >
+            <span
+              className={`h-[2px] ${
+                show && "rotate-[45deg] right-1 absolute"
+              }    bg-white w-8 transition-all duration-300 ease-out`}
+            ></span>
+            <span
+              className={`h-[2px] transition-all duration-300 ease-out bg-white  ${
+                show ? "w-0" : "w-8"
+              }`}
+            ></span>
+            <span
+              className={`h-[2px] bg-white w-8 ${
+                show && "-rotate-[45deg] absolute right-1"
+              }  transition-all duration-300 ease-out`}
+            ></span>
+          </button>
+        </div>
       </div>
       <AnimatePresence>
         {show && (

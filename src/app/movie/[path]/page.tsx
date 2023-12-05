@@ -19,6 +19,7 @@ export default async function page({
       : path == "now-playing"
       ? "now_playing"
       : path;
+
   const label =
     path == "up-coming"
       ? "Up Coming"

@@ -12,7 +12,7 @@ export default async function page() {
   return (
     <div>
       <div className="overflow-hidden">
-        <Hero results={trending} />
+        <Hero />
       </div>
       <div className="content">
         <Category label="Trending" results={trending} />

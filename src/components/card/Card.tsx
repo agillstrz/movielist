@@ -2,8 +2,15 @@
 import { MoviesProps } from "@/utils";
 import { usePathname, useRouter } from "next/navigation";
 import AddList from "../movies/AddList";
+import { MotionDiv } from "../animation/MotionDiv";
 
-export default function Card({ datas }: { datas: MoviesProps }) {
+export default function Card({
+  datas,
+  index,
+}: {
+  datas: MoviesProps;
+  index?: number;
+}) {
   const router = useRouter();
   const path = usePathname();
   const routePath = path.includes("tv")
@@ -15,7 +22,16 @@ export default function Card({ datas }: { datas: MoviesProps }) {
     : !datas.media_type;
 
   return (
-    <div className="lg:h-[21rem] lg:w-[14rem] w-44 h-[16rem]  border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-secondary flex flex-col gap-y-2   rounded-xl overflow-hidden">
+    <MotionDiv
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        delay: index && index * 0.2,
+        duration: 0.5,
+        ease: "easeInOut",
+      }}
+      className="lg:h-[21rem] lg:w-[14rem] w-44 h-[16rem]  border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-secondary flex flex-col gap-y-2   rounded-xl overflow-hidden"
+    >
       <div
         className="h-full relative group  w-full bg-cover bg-center "
         style={{
@@ -47,6 +63,6 @@ export default function Card({ datas }: { datas: MoviesProps }) {
           </div>
         </div>
       </div>
-    </div>
+    </MotionDiv>
   );
 }

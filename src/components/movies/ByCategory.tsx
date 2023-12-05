@@ -26,8 +26,8 @@ export default function ByCategory({
           ? new Array(10)
               .fill(null)
               .map((m, index) => <CardLoading key={index} />)
-          : data?.results.map((movie: MoviesProps) => (
-              <Card key={movie.id} datas={movie} />
+          : data?.results.map((movie: MoviesProps, index: number) => (
+              <Card key={movie.id} index={index} datas={movie} />
             ))}
       </div>
       {!isLoading && (

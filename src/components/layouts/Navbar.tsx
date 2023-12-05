@@ -1,20 +1,15 @@
 "use client";
 import { MyContext } from "@/context/Context";
-import HookModal from "@/hooks/HookModal";
-import SearchMovies from "@/service/SearchMovies";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import { IoSearch } from "react-icons/io5";
 import Profile from "../commons/Profile";
-import Modal from "../modals/Modal";
+import ModalSearch from "../modals/ModalSearch";
 import NavMobile from "./NavMobile";
 export default function Navbar() {
   const currentRoute = usePathname();
   const { count }: any = useContext(MyContext);
-  const { modal, setModal } = HookModal();
-  const { handleSearch, setName } = SearchMovies(setModal);
   const [scroll, setScroll] = useState<Boolean>(false);
   const [toggle, setToggle] = useState({
     name: "",
@@ -138,23 +133,7 @@ export default function Navbar() {
       </ul>
       <NavMobile />
       <div className="lg:flex hidden relative items-center gap-x-2">
-        <Modal modal={modal} setModal={setModal} label={<IoSearch size={25} />}>
-          <form
-            className="bg-base rounded-lg w-[30rem] py-5 px-5"
-            onSubmit={handleSearch}
-          >
-            <div className="flex items-center gap-2">
-              <IoSearch size={25} className="text-secondary" />
-              <input
-                autoFocus
-                type="text"
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Search Movie"
-                className="w-full h-full outline-none border-secondary transition-all duration-150 ease-in-out text-white bg-primary p-2 rounded-lg  border"
-              />
-            </div>
-          </form>
-        </Modal>
+        <ModalSearch />
         <Profile />
       </div>
     </div>

@@ -7,8 +7,6 @@ import { Poppins } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import { NextAuthProvider } from "./Provider";
 import "./globals.css";
-import { getServerSession } from "next-auth";
-import { AuthOption } from "./api/auth/[...nextauth]/route";
 
 const poppins = Poppins({
   weight: "400",
