@@ -33,7 +33,7 @@ export default function MovieResults() {
         </div>
       </div>
 
-      <div className="flex w-full h-screen  justify-center">
+      <div className="flex w-full min-h-screen  justify-center">
         <div className="grid h-full  w-full  place-items-center gap-3 lg:gap-y-3 lg:gap-x-5 grid-cols-2 lg:grid-cols-5">
           {isLoading ? (
             <div className="absolute inset-0 h-screen flex justify-center items-center">
