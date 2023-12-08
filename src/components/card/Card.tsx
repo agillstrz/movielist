@@ -1,8 +1,8 @@
 "use client";
 import { MoviesProps } from "@/utils";
 import { usePathname, useRouter } from "next/navigation";
-import AddList from "../movies/AddList";
 import { MotionDiv } from "../animation/MotionDiv";
+import AddList from "../movies/AddList";
 
 export default function Card({
   datas,

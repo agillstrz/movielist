@@ -1,8 +1,4 @@
-import Card from "@/components/card/Card";
 import ByCategory from "@/components/movies/ByCategory";
-import FetchDataServer from "@/service/FetchDataServer";
-import { MoviesProps } from "@/utils";
-import CONSTANT from "@/utils/CONSTANT";
 
 export default async function page({
   params,
