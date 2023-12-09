@@ -3,6 +3,7 @@ import { MoviesProps } from "@/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { MotionDiv } from "../animation/MotionDiv";
 import AddList from "../movies/AddList";
+import Image from "next/image";
 
 export default function Card({
   datas,
@@ -30,14 +31,16 @@ export default function Card({
         duration: 0.5,
         ease: "easeInOut",
       }}
-      className="lg:h-[21rem] lg:w-[14rem] w-44 h-[16rem]  border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-secondary flex flex-col gap-y-2   rounded-xl overflow-hidden"
+      className="lg:h-[21rem] relative lg:w-[14rem] w-44 h-[16rem]  border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-secondary flex flex-col gap-y-2   rounded-xl overflow-hidden"
     >
-      <div
-        className="h-full relative group  w-full bg-cover bg-center "
-        style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/w500/${datas.poster_path})`,
-        }}
-      >
+      <Image
+        className="absolute inset-0 "
+        fill={true}
+        src={`https://image.tmdb.org/t/p/w500/${datas.poster_path}`}
+        alt="pict"
+        loading="lazy"
+      />
+      <div className="h-full relative group  w-full">
         <div className="absolute brightness-110 shadow-2xl border text-sm font-semibold bottom-2 right-2  w-10  h-10 bg-secondary rounded-full flex justify-center items-center">
           {Number(datas.vote_average).toFixed(1)}
         </div>

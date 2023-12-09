@@ -65,6 +65,10 @@ export default function Navbar() {
         },
       ],
     },
+    // {
+    //   name: "Genre",
+    //   path: "/genre",
+    // },
   ];
   return (
     <div
