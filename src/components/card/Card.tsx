@@ -56,13 +56,6 @@ export default function Card({
                   datas.first_air_date?.split("-")[0]}
               </p>
             </button>
-            <AddList
-              desc={datas.overview}
-              title={datas.title || datas.name}
-              id={datas.id}
-              img={datas.poster_path}
-              type={routePath}
-            />
           </div>
         </div>
       </div>

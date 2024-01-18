@@ -30,7 +30,7 @@ export default function CardFav({ session }: any) {
       {data.map((m: any) => (
         <div
           key={m.id}
-          className="w-full  rounded-lg  items-center flex flex-col border border-secondary cursor-pointer gap-x-2 p-2  shadow-md hover:shadow-secondary h-fit rounded-lgrelative"
+          className="w-full  rounded-lg  items-center flex flex-col border border-secondary cursor-pointer gap-y-2 gap-x-2 p-2  shadow-md hover:shadow-secondary h-fit rounded-lgrelative"
         >
           <div
             onClick={() => push(`/${m.type}/detail/${m.id}`)}
@@ -40,8 +40,9 @@ export default function CardFav({ session }: any) {
             }}
           ></div>
           <div className="w-full font-semibold">
-            <p className="text-[12px]">{m.type}</p>
-            <h1 className="text-lg ">{m.title}</h1>
+            <h1 className="text-lg ">
+              {m.title} ({m.type})
+            </h1>
             <div className="flex gap-x-2 text-sm">
               <p>⭐7.5</p>
               <p>2018</p>

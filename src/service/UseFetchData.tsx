@@ -8,6 +8,6 @@ export const UseFetchData = ({ key = "", url }: { key?: any; url: any }) => {
       const res = await axiosInstance.get(`${url}`);
       return res.data;
     },
-    queryKey: ["fetch.data", key],
+    queryKey: [url],
   });
 };
