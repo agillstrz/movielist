@@ -31,6 +31,7 @@ export default function Card({
         duration: 0.5,
         ease: "easeInOut",
       }}
+      onClick={() => router.push(`/${routePath}/detail/${datas.id}`)}
       className="lg:h-[21rem] relative lg:w-[14rem] w-44 h-[16rem]  border border-transparent   cursor-pointer transition-all duration-150 ease-linear hover:border-secondary flex flex-col gap-y-2   rounded-xl overflow-hidden"
     >
       <Image
